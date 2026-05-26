@@ -1,0 +1,2419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수능특강 EBS-16 | 에듀케레 영수학원</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Noto Sans KR', sans-serif;
+  background:#f5f5f0;
+  color:#222;
+  line-height:1.7;
+  min-height:100vh;
+}
+.sidebar {
+  position:fixed; left:0; top:0;
+  width:280px; height:100vh;
+  background:#1a2744;
+  color:#fff;
+  padding:30px 22px;
+  overflow-y:auto;
+  z-index:100;
+  box-shadow:2px 0 20px rgba(0,0,0,0.15);
+}
+.sidebar h1 {
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  color:#c8a84b;
+  margin-bottom:6px;
+  letter-spacing:0.5px;
+  font-weight:900;
+}
+.sidebar .academy {
+  font-size:13px;
+  color:#e8e2cf;
+  margin-bottom:24px;
+  letter-spacing:0.3px;
+  border-bottom:1px solid rgba(200,168,75,0.3);
+  padding-bottom:14px;
+}
+.sidebar .series-title {
+  font-size:11px;
+  color:#9ba8c5;
+  margin-bottom:14px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.passage-list { list-style:none; }
+.passage-list li {
+  padding:12px 14px;
+  margin-bottom:6px;
+  background:rgba(255,255,255,0.04);
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.2s;
+  border-left:3px solid transparent;
+  font-size:14px;
+}
+.passage-list li:hover {
+  background:rgba(200,168,75,0.15);
+  border-left-color:#c8a84b;
+}
+.passage-list li.active {
+  background:rgba(200,168,75,0.22);
+  border-left-color:#c8a84b;
+  color:#fff;
+  font-weight:500;
+}
+.passage-list li .num {
+  font-family:'EB Garamond', serif;
+  font-size:16px;
+  font-weight:600;
+  color:#c8a84b;
+  margin-right:8px;
+}
+.passage-list li .ttl { font-size:13px; }
+.sidebar-footer {
+  margin-top:30px;
+  padding-top:18px;
+  border-top:1px solid rgba(200,168,75,0.25);
+  font-size:11px;
+  color:#9ba8c5;
+  line-height:1.6;
+}
+.main { margin-left:280px; padding:40px 60px; max-width:1100px; }
+.cover {
+  text-align:center;
+  padding:80px 40px 60px;
+  background:linear-gradient(135deg,#1a2744 0%,#2a3a5c 100%);
+  color:#fff;
+  border-radius:14px;
+  margin-bottom:30px;
+  box-shadow:0 10px 40px rgba(26,39,68,0.2);
+}
+.cover .academy-name {
+  font-family:'Playfair Display', serif;
+  font-size:18px;
+  color:#c8a84b;
+  letter-spacing:3px;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.cover .academy-ko {
+  font-size:15px;
+  color:#e8e2cf;
+  margin-bottom:40px;
+  letter-spacing:2px;
+}
+.cover h2 {
+  font-family:'Playfair Display', serif;
+  font-size:48px;
+  margin-bottom:14px;
+  color:#fff;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.cover .subtitle {
+  font-size:18px;
+  color:#c8a84b;
+  margin-bottom:30px;
+  letter-spacing:1px;
+}
+.cover .desc {
+  font-size:14px;
+  color:#d4dae8;
+  max-width:520px;
+  margin:0 auto;
+  line-height:1.8;
+}
+.tabs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  background:#fff;
+  padding:8px;
+  border-radius:10px;
+  margin-bottom:24px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.tab {
+  padding:10px 16px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:13px;
+  color:#666;
+  border-radius:6px;
+  font-weight:500;
+  transition:all 0.18s;
+  letter-spacing:0.2px;
+}
+.tab:hover { background:#f5f0e0; color:#1a2744; }
+.tab.active {
+  background:#1a2744;
+  color:#c8a84b;
+  font-weight:700;
+}
+.tab-content { display:none; animation:fadeIn 0.3s; }
+.tab-content.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+.passage-block { display:none; }
+.passage-block.active { display:block; }
+.card {
+  background:#fff;
+  padding:36px 40px;
+  border-radius:10px;
+  box-shadow:0 2px 14px rgba(0,0,0,0.06);
+  margin-bottom:20px;
+}
+.card h3 {
+  font-family:'Playfair Display', serif;
+  color:#1a2744;
+  font-size:24px;
+  margin-bottom:8px;
+  border-bottom:3px solid #c8a84b;
+  padding-bottom:10px;
+  display:inline-block;
+}
+.card .sub {
+  font-size:13px;
+  color:#888;
+  margin-bottom:20px;
+  margin-top:6px;
+}
+.full-text {
+  font-family:'EB Garamond', serif;
+  font-size:17px;
+  line-height:1.9;
+  color:#222;
+  text-align:justify;
+  padding:24px 28px;
+  background:#fafaf3;
+  border-left:4px solid #c8a84b;
+  border-radius:6px;
+  margin-top:14px;
+}
+.full-text-box {
+  font-family:'EB Garamond', serif;
+  font-size:17px;
+  line-height:1.9;
+  color:#222;
+  text-align:justify;
+  padding:22px 26px;
+  background:#fff;
+  border:2px solid #1a2744;
+  border-radius:6px;
+  margin-bottom:30px;
+}
+.sentence-block {
+  margin-bottom:26px;
+  padding-bottom:24px;
+  border-bottom:1px dashed #ddd;
+}
+.sentence-block:last-child { border-bottom:none; }
+.sent-num {
+  display:inline-block;
+  font-family:'EB Garamond', serif;
+  font-size:20px;
+  color:#c8a84b;
+  font-weight:700;
+  margin-right:6px;
+}
+.eng-box {
+  font-family:'EB Garamond', serif;
+  font-size:16px;
+  line-height:1.7;
+  padding:14px 18px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-left:4px solid #2e75b6;
+  border-radius:4px;
+  margin:8px 0 12px;
+}
+.slash {
+  font-size:14px;
+  color:#444;
+  background:#fafaf3;
+  padding:10px 14px;
+  border-radius:4px;
+  margin-bottom:6px;
+  line-height:1.8;
+}
+.literal {
+  font-size:14px;
+  color:#1a2744;
+  padding:6px 14px;
+  margin-bottom:10px;
+}
+.literal::before { content:"→ "; color:#c8a84b; font-weight:bold; }
+.grammar-list { padding-left:6px; }
+.grammar-item {
+  font-size:13px;
+  margin-bottom:6px;
+  background:#fff8dd;
+  border-left:3px solid #c8a84b;
+  padding:8px 12px;
+  border-radius:3px;
+}
+.gm-name { font-weight:700; color:#7f6000; }
+.gm-ex { color:#333; }
+.gm-pt { color:#b06000; font-style:italic; }
+.word-grid { display:grid; gap:10px; }
+.word-row {
+  display:grid;
+  grid-template-columns:160px 1fr 70px 1.4fr;
+  gap:14px;
+  padding:11px 14px;
+  background:#fafaf3;
+  border-radius:5px;
+  align-items:center;
+  font-size:14px;
+}
+.word-row:hover { background:#fff3c8; }
+.word-en {
+  font-family:'EB Garamond', serif;
+  font-weight:700;
+  color:#1a2744;
+  font-size:16px;
+}
+.word-ko { color:#333; }
+.word-pos {
+  font-style:italic;
+  color:#888;
+  font-family:'EB Garamond', serif;
+  font-size:13px;
+  text-align:center;
+}
+.word-deriv { color:#666; font-size:13px; }
+.translation {
+  font-size:15px;
+  line-height:2.0;
+  color:#222;
+  padding:20px 24px;
+  background:#fafaf3;
+  border-radius:6px;
+  text-align:justify;
+}
+.theme-box { margin-bottom:18px; }
+.theme-label {
+  display:inline-block;
+  background:#1a2744;
+  color:#c8a84b;
+  padding:5px 14px;
+  border-radius:14px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+.theme-content {
+  font-size:15px;
+  line-height:1.8;
+  color:#222;
+  padding:14px 20px;
+  background:#fafaf3;
+  border-left:4px solid #c8a84b;
+  border-radius:4px;
+}
+.structure-flow {
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.flow-step {
+  flex:1;
+  min-width:180px;
+  padding:14px 16px;
+  background:#fff;
+  border:2px solid #c8a84b;
+  border-radius:6px;
+  font-size:13px;
+  line-height:1.6;
+  position:relative;
+}
+.flow-step .step-num {
+  display:block;
+  font-family:'EB Garamond', serif;
+  font-size:13px;
+  font-weight:700;
+  color:#c8a84b;
+  margin-bottom:4px;
+  letter-spacing:1px;
+}
+.background {
+  font-size:14.5px;
+  line-height:1.9;
+  color:#222;
+  padding:20px 24px;
+  background:#fafaf3;
+  border-left:4px solid #2e75b6;
+  border-radius:6px;
+}
+.background h4 {
+  color:#1a2744;
+  font-size:16px;
+  margin-bottom:8px;
+  margin-top:14px;
+}
+.background h4:first-child { margin-top:0; }
+.background p { margin-bottom:10px; }
+.background strong { color:#7f6000; background:#fff2cc; padding:2px 5px; border-radius:3px; }
+.quiz-block {
+  margin-bottom:28px;
+  padding:22px 26px;
+  background:#fafaf3;
+  border-radius:8px;
+  border-left:4px solid #1a2744;
+}
+.quiz-q {
+  font-size:15px;
+  font-weight:700;
+  color:#1a2744;
+  margin-bottom:14px;
+  line-height:1.7;
+}
+.quiz-q .qtype {
+  display:inline-block;
+  background:#c8a84b;
+  color:#1a2744;
+  font-size:11px;
+  padding:3px 9px;
+  border-radius:10px;
+  margin-right:8px;
+  letter-spacing:0.5px;
+  font-weight:700;
+}
+.quiz-passage {
+  font-family:'EB Garamond', serif;
+  font-size:15px;
+  line-height:1.8;
+  background:#fff;
+  padding:14px 18px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  margin-bottom:14px;
+}
+.quiz-opts { list-style:none; }
+.quiz-opts li {
+  padding:10px 16px;
+  background:#fff;
+  border:1px solid #e0e0e0;
+  border-radius:5px;
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:all 0.15s;
+  font-size:14px;
+  line-height:1.6;
+}
+.quiz-opts li:hover { background:#fff8dd; border-color:#c8a84b; }
+.quiz-opts li.correct { background:#d4edda; border-color:#28a745; color:#155724; font-weight:600; }
+.quiz-opts li.wrong { background:#f8d7da; border-color:#dc3545; color:#721c24; }
+.quiz-opts li .opt-num {
+  font-family:'EB Garamond', serif;
+  font-weight:700;
+  color:#c8a84b;
+  margin-right:8px;
+}
+.quiz-fb {
+  margin-top:10px;
+  padding:10px 14px;
+  border-radius:4px;
+  font-size:13px;
+  display:none;
+}
+.quiz-fb.show { display:block; }
+.quiz-fb.ok { background:#d4edda; color:#155724; }
+.quiz-fb.ng { background:#f8d7da; color:#721c24; }
+.reset-btn {
+  margin-top:8px;
+  padding:6px 14px;
+  background:#1a2744;
+  color:#c8a84b;
+  border:none;
+  border-radius:4px;
+  font-size:12px;
+  cursor:pointer;
+  font-family:'Noto Sans KR', sans-serif;
+}
+.reset-btn:hover { background:#2a3a5c; }
+.essay-block {
+  margin-bottom:24px;
+  padding:22px 26px;
+  background:#fff;
+  border-radius:8px;
+  border:2px solid #c8a84b;
+}
+.essay-q {
+  font-size:15px;
+  font-weight:700;
+  color:#1a2744;
+  margin-bottom:8px;
+  line-height:1.7;
+}
+.essay-cond {
+  font-size:13px;
+  color:#7f6000;
+  background:#fff2cc;
+  padding:6px 12px;
+  border-radius:4px;
+  margin-bottom:12px;
+  display:inline-block;
+}
+.essay-area {
+  width:100%;
+  min-height:90px;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:14px;
+  line-height:1.7;
+  resize:vertical;
+  margin-bottom:10px;
+}
+.essay-area:focus { outline:none; border-color:#c8a84b; box-shadow:0 0 0 2px #fff2cc; }
+.essay-toggle {
+  padding:8px 16px;
+  background:#1a2744;
+  color:#c8a84b;
+  border:none;
+  border-radius:4px;
+  font-size:13px;
+  cursor:pointer;
+  font-family:'Noto Sans KR', sans-serif;
+  font-weight:500;
+}
+.essay-toggle:hover { background:#2a3a5c; }
+.essay-ans {
+  display:none;
+  margin-top:12px;
+  padding:14px 18px;
+  background:#e2efda;
+  border-left:4px solid #375623;
+  border-radius:4px;
+  font-size:14px;
+  line-height:1.8;
+  color:#375623;
+}
+.essay-ans.show { display:block; }
+.essay-ans strong { color:#1a2744; }
+@media (max-width:900px) {
+  .sidebar { width:240px; padding:20px 16px; }
+  .main { margin-left:240px; padding:24px; }
+  .cover h2 { font-size:32px; }
+  .word-row { grid-template-columns:1fr; gap:4px; padding:10px 14px; }
+  .word-pos { text-align:left; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h1>에듀케레</h1>
+  <div class="academy">에듀케레 영수학원</div>
+  <div class="series-title">수능특강 EBS-16</div>
+  <ul class="passage-list">
+    <li class="active" onclick="showPassage(1)"><span class="num">1</span><span class="ttl">Clocks as Repetition</span></li>
+    <li onclick="showPassage(2)"><span class="num">2</span><span class="ttl">Online Writing Hook</span></li>
+    <li onclick="showPassage(3)"><span class="num">3</span><span class="ttl">Vicarious Functioning</span></li>
+    <li onclick="showPassage(4)"><span class="num">4</span><span class="ttl">Bir Tawil Border</span></li>
+    <li onclick="showPassage(5)"><span class="num">5</span><span class="ttl">Reference Group</span></li>
+  </ul>
+  <div class="sidebar-footer">
+    경남 양산시 물금읍<br>
+    Tel. 055-363-8010<br>
+    EDUCERE English Lab
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="cover">
+  <div class="academy-name">EDUCERE</div>
+  <div class="academy-ko">에듀케레 영수학원</div>
+  <h2>EBS-16</h2>
+  <div class="subtitle">수능특강 영어 독해 분석</div>
+  <div class="desc">
+    5개 지문에 대한 문장 단위 정밀 분석과 인터랙티브 변형문제를 통해<br>
+    독해력과 사고력을 함께 훈련합니다.
+  </div>
+</div>
+<!-- ============ 지문 1: Clocks as Repetition ============ -->
+<div class="passage-block active" id="p1">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(1,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(1,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(1,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(1,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(1,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(1,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(1,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p1-full">
+<div class="card">
+<h3>Clocks as Repetition</h3>
+<div class="sub">시계는 반복적인 과정 — 시간 측정의 본질</div>
+<div class="full-text">
+We usually think of a clock as a physical thing, like an alarm clock or a wristwatch. But a clock is really a process embodied in a machine, and the nature of that process is repetitive. A clock can be almost any process that repeats itself over and over again for an indefinite period. Water clocks drip at a steady pace; quartz crystals vibrate regularly. Indeed, it is almost impossible to think of a clock that does not depend on a repetitive cycle of events. The only example that comes to mind readily is a candle marked in hours. But here too there is iteration — the repeated burning of molecules of wax — so this too is an iterative process, although at first masked. The use of radiocarbon dating is another, much longer scale clock that also appears to be like this. It seems to yield a smooth time scale but in fact does not: the decay of atoms of carbon-14 is repetitive, although on a large scale it gives the appearance of being continuous.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p1-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+We usually think of a clock as a physical thing, like an alarm clock or a wristwatch. But a clock is really a process embodied in a machine, and the nature of that process is repetitive. A clock can be almost any process that repeats itself over and over again for an indefinite period. Water clocks drip at a steady pace; quartz crystals vibrate regularly. Indeed, it is almost impossible to think of a clock that does not depend on a repetitive cycle of events. The only example that comes to mind readily is a candle marked in hours. But here too there is iteration — the repeated burning of molecules of wax — so this too is an iterative process, although at first masked. The use of radiocarbon dating is another, much longer scale clock that also appears to be like this. It seems to yield a smooth time scale but in fact does not: the decay of atoms of carbon-14 is repetitive, although on a large scale it gives the appearance of being continuous.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">We usually think of a clock as a physical thing, like an alarm clock or a wristwatch.</div>
+<div class="slash">We / usually think of / a clock / as a physical thing, / like an alarm clock or a wristwatch.</div>
+<div class="literal">우리는 / 보통 ~으로 생각한다 / 시계를 / 물리적 물건으로 / 자명종이나 손목시계와 같은</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ think of A as B 구문</span> <span class="gm-ex">▶ think of a clock as a physical thing</span> <span class="gm-pt">★ "A를 B로 여기다/간주하다" — regard/view/see A as B와 호환되는 표현으로 어휘 동의어 문제 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 전치사 like (예시 도입)</span> <span class="gm-ex">▶ like an alarm clock or a wristwatch</span> <span class="gm-pt">★ 접속사 as(~처럼)와의 구분, 그리고 "~와 같은"의 예시 기능 확인</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">But a clock is really a process embodied in a machine, and the nature of that process is repetitive.</div>
+<div class="slash">But / a clock is really a process / embodied in a machine, / and the nature of that process / is repetitive.</div>
+<div class="literal">그러나 / 시계는 실제로 하나의 과정이다 / 기계 안에 구현된 / 그리고 그 과정의 본질은 / 반복적이다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 과거분사구 후치수식</span> <span class="gm-ex">▶ a process [embodied in a machine] — process를 수식</span> <span class="gm-pt">★ "기계에 구현된 과정" 수동의 의미; 관계대명사+be동사 생략(=which is embodied) 구조로도 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 등위접속사 and로 절 병렬</span> <span class="gm-ex">▶ a clock is ~ , and the nature ~ is ~</span> <span class="gm-pt">★ 두 개의 독립절이 and로 연결, 주어-동사 수일치 별도 확인</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">A clock can be almost any process that repeats itself over and over again for an indefinite period.</div>
+<div class="slash">A clock can be / almost any process / that repeats itself / over and over again / for an indefinite period.</div>
+<div class="literal">시계는 ~일 수 있다 / 거의 모든 과정 / 그 자체를 반복하는 / 거듭하여 / 무한정 기간 동안</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격)</span> <span class="gm-ex">▶ any process [that repeats itself]</span> <span class="gm-pt">★ 선행사가 any/every/all + 명사일 때 which보다 that 선호; 수일치는 단수 process에 맞춰 repeats</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 재귀대명사 itself</span> <span class="gm-ex">▶ repeats itself — 주어=목적어</span> <span class="gm-pt">★ 주어(process)와 목적어가 동일하므로 재귀대명사 사용; it으로 바꾸면 오류</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사구 over and over again</span> <span class="gm-ex">▶ 거듭, 되풀이하여</span> <span class="gm-pt">★ repeatedly와 동의 — 본문의 핵심 키워드 repetitive와 의미 연결</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">Water clocks drip at a steady pace; quartz crystals vibrate regularly.</div>
+<div class="slash">Water clocks drip / at a steady pace; / quartz crystals vibrate / regularly.</div>
+<div class="literal">물시계는 떨어진다 / 일정한 속도로 / 수정 결정은 진동한다 / 규칙적으로</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 세미콜론(;)으로 두 절 연결</span> <span class="gm-ex">▶ Water clocks drip ~ ; quartz crystals vibrate ~</span> <span class="gm-pt">★ 의미상 밀접한 두 독립절을 연결 — and로 바꿔 쓸 수 있음; 병렬 사례 제시</span></div>
+<div class="grammar-item"><span class="gm-name">◆ at a + 형용사 + pace</span> <span class="gm-ex">▶ at a steady pace (일정한 속도로)</span> <span class="gm-pt">★ at a slow/fast/steady pace 구문 암기 — 어휘 영작 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">Indeed, it is almost impossible to think of a clock that does not depend on a repetitive cycle of events.</div>
+<div class="slash">Indeed, / it is almost impossible / to think of a clock / that does not depend on / a repetitive cycle of events.</div>
+<div class="literal">실제로 / 거의 불가능하다 / 시계를 생각하는 것은 / ~에 의존하지 않는 / 반복적인 사건의 주기에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 가주어 it ~ 진주어 to부정사</span> <span class="gm-ex">▶ it is impossible [to think of a clock ~]</span> <span class="gm-pt">★ "it"이 가주어, "to think of ~"가 진주어; 진주어 자리에 that절 vs to부정사 구분 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that + 부정문</span> <span class="gm-ex">▶ a clock [that does not depend on ~]</span> <span class="gm-pt">★ 이중부정 구조: "impossible ~ that does not" = "모든 시계는 의존한다"는 의미로 환언</span></div>
+<div class="grammar-item"><span class="gm-name">◆ depend on (구동사)</span> <span class="gm-ex">▶ ~에 의존하다, ~에 좌우되다</span> <span class="gm-pt">★ rely on/count on과 동의어 — 어휘 동의어 문제 단골</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">The only example that comes to mind readily is a candle marked in hours.</div>
+<div class="slash">The only example / that comes to mind readily / is a candle / marked in hours.</div>
+<div class="literal">유일한 예는 / 쉽게 떠오르는 / ~이다 양초 / 시간 단위로 표시된</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격, 선행사=the only example)</span> <span class="gm-ex">▶ The only example [that comes to mind]</span> <span class="gm-pt">★ 선행사가 the only로 한정될 때 관계사 that 강제 — which 사용 불가, 어법 출제 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 후치수식</span> <span class="gm-ex">▶ a candle [marked in hours] — candle을 수식</span> <span class="gm-pt">★ "시간 단위로 표시된 양초" 수동 의미; which is가 생략된 구조</span></div>
+<div class="grammar-item"><span class="gm-name">◆ come to mind (관용 표현)</span> <span class="gm-ex">▶ 마음에 떠오르다, 생각나다</span> <span class="gm-pt">★ readily(=쉽게)와 결합하여 자연스러운 영작 표현</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">But here too there is iteration — the repeated burning of molecules of wax — so this too is an iterative process, although at first masked.</div>
+<div class="slash">But here too / there is iteration / — the repeated burning of molecules of wax — / so this too is an iterative process, / although at first masked.</div>
+<div class="literal">그러나 여기에서도 / 반복이 존재한다 / — 밀랍 분자의 반복적 연소라는 — / 그래서 이것 또한 반복적 과정이다 / 처음에는 가려져 있을지라도</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ there is + 단수명사 (존재의 there)</span> <span class="gm-ex">▶ there is iteration</span> <span class="gm-pt">★ 추상명사(iteration)는 단수 취급, are 사용 시 어법 오류</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대시(—)를 활용한 동격 삽입</span> <span class="gm-ex">▶ iteration — the repeated burning ~ — </span> <span class="gm-pt">★ iteration의 구체적 내용을 부연 설명; 콜론/콤마와 함께 출제되는 부연 표현</span></div>
+<div class="grammar-item"><span class="gm-name">◆ although + 분사구문 (생략 구조)</span> <span class="gm-ex">▶ although (it is) at first masked</span> <span class="gm-pt">★ 접속사+분사 = 주어와 be동사 생략; 문맥상 주어가 주절의 this임을 파악해야 해석 가능</span></div>
+</div>
+</div>
+
+<!-- 문장 8 -->
+<div class="sentence-block">
+<span class="sent-num">⑧</span>
+<div class="eng-box">The use of radiocarbon dating is another, much longer scale clock that also appears to be like this.</div>
+<div class="slash">The use of radiocarbon dating / is another, much longer scale clock / that also appears / to be like this.</div>
+<div class="literal">방사성 탄소 연대 측정의 사용은 / 또 다른, 훨씬 더 긴 시간 척도의 시계이다 / ~인 것처럼 보이는 / 이것과 같이</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 비교급 강조 부사 much</span> <span class="gm-ex">▶ much longer scale clock</span> <span class="gm-pt">★ 비교급 강조: much/even/far/still/a lot OK, very 불가 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that + appear to부정사</span> <span class="gm-ex">▶ a clock [that appears to be like this]</span> <span class="gm-pt">★ appear/seem + to부정사 = "~인 것처럼 보이다" 정형 구조</span></div>
+</div>
+</div>
+
+<!-- 문장 9 -->
+<div class="sentence-block">
+<span class="sent-num">⑨</span>
+<div class="eng-box">It seems to yield a smooth time scale but in fact does not: the decay of atoms of carbon-14 is repetitive, although on a large scale it gives the appearance of being continuous.</div>
+<div class="slash">It seems / to yield a smooth time scale / but in fact does not: / the decay of atoms of carbon-14 / is repetitive, / although on a large scale / it gives the appearance / of being continuous.</div>
+<div class="literal">그것은 ~인 것처럼 보인다 / 매끄러운 시간 척도를 산출하는 / 그러나 사실은 그렇지 않다 / 탄소-14 원자의 붕괴는 / 반복적이다 / 큰 척도에서는 / 그것이 외관을 보일지라도 / 연속적인</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 콜론(:)으로 부연·재진술</span> <span class="gm-ex">▶ but in fact does not : the decay ~ is repetitive</span> <span class="gm-pt">★ 콜론 뒤에 앞 문장의 이유/구체적 설명이 옴 — 글의 논리 구조 파악</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대동사 does (반복 회피)</span> <span class="gm-ex">▶ but in fact does not (yield a smooth time scale)</span> <span class="gm-pt">★ 일반동사 yield의 반복을 피하기 위해 do 대동사 사용 — 어법 출제 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 양보의 although + 동명사구</span> <span class="gm-ex">▶ although it gives the appearance of being continuous</span> <span class="gm-pt">★ "비록 ~로 보일지라도"; the appearance of + 동명사 = "~인 것처럼 보임"</span></div>
+<div class="grammar-item"><span class="gm-name">◆ on a large scale (전치사구)</span> <span class="gm-ex">▶ 큰 규모/척도에서</span> <span class="gm-pt">★ on a small/large scale 짝구문 — 영작·어휘 빈출</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p1-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">embody</div><div class="word-ko">구현하다, 구체화하다</div><div class="word-pos">v.</div><div class="word-deriv">embodiment (n.)</div></div>
+<div class="word-row"><div class="word-en">repetitive</div><div class="word-ko">반복적인</div><div class="word-pos">adj.</div><div class="word-deriv">repeat (v.), repetition (n.)</div></div>
+<div class="word-row"><div class="word-en">indefinite</div><div class="word-ko">무한정의, 정해지지 않은</div><div class="word-pos">adj.</div><div class="word-deriv">indefinitely (adv.), definite (반의어)</div></div>
+<div class="word-row"><div class="word-en">drip</div><div class="word-ko">(액체가) 똑똑 떨어지다</div><div class="word-pos">v.</div><div class="word-deriv">dripping (n.)</div></div>
+<div class="word-row"><div class="word-en">steady</div><div class="word-ko">일정한, 꾸준한</div><div class="word-pos">adj.</div><div class="word-deriv">steadily (adv.), steadiness (n.)</div></div>
+<div class="word-row"><div class="word-en">vibrate</div><div class="word-ko">진동하다</div><div class="word-pos">v.</div><div class="word-deriv">vibration (n.), vibrant (adj.)</div></div>
+<div class="word-row"><div class="word-en">depend on</div><div class="word-ko">~에 의존하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">dependent (adj.), dependence (n.)</div></div>
+<div class="word-row"><div class="word-en">iteration</div><div class="word-ko">반복, 되풀이</div><div class="word-pos">n.</div><div class="word-deriv">iterate (v.), iterative (adj.)</div></div>
+<div class="word-row"><div class="word-en">molecule</div><div class="word-ko">분자</div><div class="word-pos">n.</div><div class="word-deriv">molecular (adj.)</div></div>
+<div class="word-row"><div class="word-en">mask</div><div class="word-ko">가리다, 감추다</div><div class="word-pos">v.</div><div class="word-deriv">masked (adj.)</div></div>
+<div class="word-row"><div class="word-en">radiocarbon dating</div><div class="word-ko">방사성 탄소 연대 측정</div><div class="word-pos">n.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">yield</div><div class="word-ko">산출하다, (결과를) 내다</div><div class="word-pos">v.</div><div class="word-deriv">yielding (adj.)</div></div>
+<div class="word-row"><div class="word-en">decay</div><div class="word-ko">붕괴(하다), 부패(하다)</div><div class="word-pos">n./v.</div><div class="word-deriv">decayed (adj.)</div></div>
+<div class="word-row"><div class="word-en">continuous</div><div class="word-ko">연속적인, 끊임없는</div><div class="word-pos">adj.</div><div class="word-deriv">continuity (n.), continuously (adv.)</div></div>
+<div class="word-row"><div class="word-en">come to mind</div><div class="word-ko">마음에 떠오르다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p1-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+우리는 보통 시계를 자명종이나 손목시계처럼 물리적인 물건으로 생각한다. 그러나 시계는 사실 기계에 구현된 하나의 과정이며, 그 과정의 본질은 반복적이다. 시계는 무한정한 기간 동안 거듭해서 스스로를 반복하는 거의 모든 과정이 될 수 있다. 물시계는 일정한 속도로 물방울을 떨어뜨리고, 수정 결정은 규칙적으로 진동한다. 사실 반복적인 사건의 주기에 의존하지 않는 시계를 생각해 내는 것은 거의 불가능하다. 쉽게 떠오르는 유일한 예는 시간 단위로 눈금이 표시된 양초이다. 그러나 이 경우에도 반복 — 밀랍 분자의 반복적인 연소 — 이 존재하므로, 처음에는 그것이 가려져 있을지라도 이 또한 반복적인 과정이다. 방사성 탄소 연대 측정의 사용은 훨씬 더 긴 시간 척도의, 또 다른 같은 부류의 시계이다. 그것은 매끄러운 시간 척도를 산출하는 것처럼 보이지만 사실은 그렇지 않다. 즉, 탄소-14 원자의 붕괴는 반복적이며, 단지 큰 척도에서 그것이 연속적인 것처럼 보일 뿐이다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p1-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">시계의 본질로서의 반복적 과정 (The repetitive nature of all clocks)</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">시계는 물리적 사물이라기보다 반복적인 과정 그 자체이며, 외견상 연속적으로 보이는 양초나 방사성 탄소 연대 측정조차도 사실은 반복적 주기에 기반한다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 도입</span>시계는 물건이 아니라 기계에 구현된 '반복적 과정'이다 (통념 반박)</div>
+<div class="flow-step"><span class="step-num">② 전개 1</span>물시계, 수정 진동 등 반복 주기 사례 제시</div>
+<div class="flow-step"><span class="step-num">③ 전개 2</span>겉보기 예외(양초, 방사성 탄소)도 사실은 분자·원자 차원의 반복</div>
+<div class="flow-step"><span class="step-num">④ 결론</span>모든 시계는 결국 반복적 주기에 의존한다는 일반화</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p1-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. 시계의 역사와 종류</h4>
+<p>인류는 오래전부터 시간을 측정하기 위해 다양한 장치를 고안해 왔다. <strong>해시계(sundial)</strong>는 그림자의 위치로, <strong>물시계(water clock, clepsydra)</strong>는 일정 속도로 떨어지는 물의 양으로, <strong>모래시계(hourglass)</strong>는 모래의 흐름으로 시간을 쟀다. 현대의 <strong>수정시계(quartz clock)</strong>는 수정에 전류를 흘릴 때 발생하는 일정한 진동(초당 약 32,768회)을 이용한다.</p>
+
+<h4>2. 양초 시계(Candle clock)</h4>
+<p>중세 시대에 쓰이던 양초 시계는 양초 옆면에 시간 단위로 눈금을 새겨, 양초가 타들어가는 길이로 시간을 가늠하는 도구였다. 겉보기에는 '연속적으로 녹는' 비반복적 시계처럼 보이지만, 본문이 지적하듯 분자 차원에서는 밀랍 분자들이 산소와 결합해 연소하는 <strong>반복적 화학반응</strong>이 일어난다.</p>
+
+<h4>3. 방사성 탄소 연대 측정(Radiocarbon dating)</h4>
+<p>1949년 미국 화학자 윌러드 리비(Willard Libby)가 개발한 기법으로, 생명체가 죽은 뒤 체내의 <strong>탄소-14(¹⁴C)</strong>가 약 5,730년 반감기로 붕괴하는 성질을 이용해 유물·화석의 연대를 추정한다. 본문은 거시적으로는 연속적인 시간 흐름을 주는 것 같지만, 실제로는 개별 원자의 <strong>방사성 붕괴라는 반복 사건</strong>에 기반함을 강조한다.</p>
+
+<h4>4. '과정으로서의 시계'라는 관점</h4>
+<p>물리학·철학에서 시간은 종종 '사건의 흐름'으로 정의된다. 본문의 핵심은 시계라는 도구를 <strong>물체(object)</strong>가 아닌 <strong>반복적 사건의 집합(process)</strong>으로 재정의함으로써, 시간 측정의 본질이 '반복'에 있다는 통찰을 주는 것이다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p1-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q1-1">
+<li onclick="check(1,1,1,false)"><span class="opt-num">①</span> 시계 제작 기술의 역사적 발전 과정</li>
+<li onclick="check(1,1,2,true)"><span class="opt-num">②</span> 모든 시계의 본질로서의 반복적 과정</li>
+<li onclick="check(1,1,3,false)"><span class="opt-num">③</span> 방사성 탄소 연대 측정의 정확도 한계</li>
+<li onclick="check(1,1,4,false)"><span class="opt-num">④</span> 자연 현상에서 관찰되는 주기성의 다양성</li>
+<li onclick="check(1,1,5,false)"><span class="opt-num">⑤</span> 양초 시계가 현대 시계로 진화한 과정</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-1"></div>
+<button class="reset-btn" onclick="resetQuiz(1,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">But a clock is really a process embodied in a machine, and the nature of that process is ____________. … Indeed, it is almost impossible to think of a clock that does not depend on a repetitive cycle of events.</div>
+<ul class="quiz-opts" id="q1-2">
+<li onclick="check(1,2,1,false)"><span class="opt-num">①</span> mechanical</li>
+<li onclick="check(1,2,2,false)"><span class="opt-num">②</span> continuous</li>
+<li onclick="check(1,2,3,true)"><span class="opt-num">③</span> repetitive</li>
+<li onclick="check(1,2,4,false)"><span class="opt-num">④</span> unpredictable</li>
+<li onclick="check(1,2,5,false)"><span class="opt-num">⑤</span> invisible</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-2"></div>
+<button class="reset-btn" onclick="resetQuiz(1,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">A clock can be almost any process ①that repeats ②itself over and over again for an indefinite period. … The only example ③that comes to mind readily is a candle ④marking in hours. But here too there ⑤is iteration.</div>
+<ul class="quiz-opts" id="q1-3">
+<li onclick="check(1,3,1,false)"><span class="opt-num">①</span> that (관계대명사)</li>
+<li onclick="check(1,3,2,false)"><span class="opt-num">②</span> itself (재귀대명사)</li>
+<li onclick="check(1,3,3,false)"><span class="opt-num">③</span> that (관계대명사)</li>
+<li onclick="check(1,3,4,true)"><span class="opt-num">④</span> marking → marked</li>
+<li onclick="check(1,3,5,false)"><span class="opt-num">⑤</span> is (단수동사)</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-3"></div>
+<button class="reset-btn" onclick="resetQuiz(1,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q1-4">
+<li onclick="check(1,4,1,false)"><span class="opt-num">①</span> 시계는 본질적으로 기계에 구현된 하나의 과정이다.</li>
+<li onclick="check(1,4,2,false)"><span class="opt-num">②</span> 수정 결정은 규칙적으로 진동한다.</li>
+<li onclick="check(1,4,3,false)"><span class="opt-num">③</span> 시간 단위로 표시된 양초도 반복적 과정에 속한다.</li>
+<li onclick="check(1,4,4,true)"><span class="opt-num">④</span> 방사성 탄소 연대 측정은 진정으로 연속적인 시간 척도를 산출한다.</li>
+<li onclick="check(1,4,5,false)"><span class="opt-num">⑤</span> 거의 모든 시계는 반복적 사건의 주기에 의존한다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-4"></div>
+<button class="reset-btn" onclick="resetQuiz(1,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> But a clock is really a process embodied in a machine, and the nature of that process is repetitive.<br><br>
+<strong>(A)</strong> Indeed, it is almost impossible to think of a clock that does not depend on a repetitive cycle of events. The only example that comes to mind readily is a candle marked in hours.<br>
+<strong>(B)</strong> A clock can be almost any process that repeats itself over and over again for an indefinite period. Water clocks drip at a steady pace; quartz crystals vibrate regularly.<br>
+<strong>(C)</strong> But here too there is iteration — the repeated burning of molecules of wax — so this too is an iterative process, although at first masked.
+</div>
+<ul class="quiz-opts" id="q1-5">
+<li onclick="check(1,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(1,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(1,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(1,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(1,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-5"></div>
+<button class="reset-btn" onclick="resetQuiz(1,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">A clock is essentially a <strong>(A) __________</strong> embodied in a machine, and even examples that seem continuous, such as a candle or radiocarbon dating, ultimately rely on a <strong>(B) __________</strong> cycle of events.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(1,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans1-1">
+<strong>(A)</strong> process &nbsp;|&nbsp; <strong>(B)</strong> repetitive<br>
+<strong>해설:</strong> 본문 ②번 문장 "a clock is really a <em>process</em> embodied in a machine"과 ⑤번 문장 "a <em>repetitive</em> cycle of events"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 양초가 처음에는 반복적 과정으로 보이지 않지만, 결국 반복적 과정이라고 볼 수 있는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 30 단어 내외 · "burning", "molecules", "wax" 중 두 단어 이상 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(1,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans1-2">
+<strong>모범답안:</strong> Although a candle appears to burn continuously, the process actually involves the repeated burning of molecules of wax, so it is fundamentally an iterative process that is simply masked at first.<br><br>
+<strong>해설:</strong> 본문 ⑦번 문장의 "the repeated burning of molecules of wax — so this too is an iterative process, although at first masked"를 자신의 문장으로 재구성한 답안. 핵심 키워드 burning / molecules / wax를 모두 활용하고, 양보(although)와 인과(so) 관계를 명확히 드러내야 함.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 1 끝 ============ -->
+<!-- ============ 지문 2: Online Writing Hook ============ -->
+<div class="passage-block" id="p2">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(2,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(2,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(2,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(2,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(2,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(2,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(2,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p2-full">
+<div class="card">
+<h3>Online Writing &amp; the Hook</h3>
+<div class="sub">학술적 글쓰기 vs 온라인 글쓰기 — 결론을 먼저 제시하라</div>
+<div class="full-text">
+In academia, you are taught to write up your results thus: "I came up with a hypothesis, then I did this experiment, and then I did another experiment, then I tested my ideas some more, and so on until [dramatic fanfare] ta-da! I proved this." If you wrote this way online, very few of your readers would make it to your dramatic conclusion, no matter how exciting or groundbreaking it was. Online, we don't have the patience to wait for your big reveal at the end. Instead, you need to tell us up front: "I proved this! And here's how I know it..." Your readership may still dwindle and trail off over the course of your writing, but at least the vast majority know what it is you've achieved from the very beginning. A few more of them may stay along for the ride if the opening line — the "hook," in journalistic terms — is particularly interesting. If you grab their attention early, you can more likely convince more readers to stay for the whole story.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p2-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+In academia, you are taught to write up your results thus: "I came up with a hypothesis, then I did this experiment, and then I did another experiment, then I tested my ideas some more, and so on until [dramatic fanfare] ta-da! I proved this." If you wrote this way online, very few of your readers would make it to your dramatic conclusion, no matter how exciting or groundbreaking it was. Online, we don't have the patience to wait for your big reveal at the end. Instead, you need to tell us up front: "I proved this! And here's how I know it..." Your readership may still dwindle and trail off over the course of your writing, but at least the vast majority know what it is you've achieved from the very beginning. A few more of them may stay along for the ride if the opening line — the "hook," in journalistic terms — is particularly interesting. If you grab their attention early, you can more likely convince more readers to stay for the whole story.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">In academia, you are taught to write up your results thus: "I came up with a hypothesis, then I did this experiment, and then I did another experiment, then I tested my ideas some more, and so on until [dramatic fanfare] ta-da! I proved this."</div>
+<div class="slash">In academia, / you are taught / to write up your results / thus: / "I came up with a hypothesis, / then I did this experiment, / and then I did another experiment, / then I tested my ideas some more, / and so on until / [dramatic fanfare] ta-da! / I proved this."</div>
+<div class="literal">학계에서는 / 당신은 가르침을 받는다 / 결과를 정리해 쓰도록 / 이런 식으로 / "나는 가설을 세웠다 / 그러고 나서 이 실험을 했다 / 그리고 또 다른 실험을 했다 / 그러고 나서 나의 생각을 좀 더 검증했다 / 그렇게 계속해서 / 결국 / 나는 이것을 증명했다"</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 5형식 수동태: be taught to부정사</span> <span class="gm-ex">▶ you are taught to write up your results</span> <span class="gm-pt">★ teach + O + to V → be taught to V; 수동태에서도 to부정사 유지 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 구동사 write up / come up with</span> <span class="gm-ex">▶ write up = 정리해서 쓰다 / come up with = 떠올리다, 생각해 내다</span> <span class="gm-pt">★ write down(받아 적다)과 구분; come up with는 think of/devise와 동의</span></div>
+<div class="grammar-item"><span class="gm-name">◆ thus + 콜론(:) (예시 도입)</span> <span class="gm-ex">▶ write up your results thus: "…"</span> <span class="gm-pt">★ thus = "이런 식으로/이렇게"; 콜론 뒤에 구체적 인용/예시를 제시하는 정형 구조</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">If you wrote this way online, very few of your readers would make it to your dramatic conclusion, no matter how exciting or groundbreaking it was.</div>
+<div class="slash">If you wrote / this way online, / very few of your readers / would make it / to your dramatic conclusion, / no matter how exciting or groundbreaking / it was.</div>
+<div class="literal">만약 당신이 쓴다면 / 이런 식으로 온라인에 / 독자들 중 극소수만이 / 도달할 것이다 / 당신의 극적인 결론에 / 아무리 흥미롭거나 획기적이라 해도 / 그것이</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 가정법 과거 (현재 사실의 반대)</span> <span class="gm-ex">▶ If you wrote ~, very few would make it ~</span> <span class="gm-pt">★ If + 주어 + 과거동사, 주어 + would/could + 동사원형 — 현재 가정; 어법·영작 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ make it to ~ (관용 표현)</span> <span class="gm-ex">▶ make it to your dramatic conclusion</span> <span class="gm-pt">★ "(~까지) 도달하다, 해내다" — reach와 동의; 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ no matter how + 형용사 + 주어 + 동사</span> <span class="gm-ex">▶ no matter how exciting or groundbreaking it was</span> <span class="gm-pt">★ "아무리 ~할지라도" = however 부사절; 양보의 부사절로 어법·구조 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">Online, we don't have the patience to wait for your big reveal at the end.</div>
+<div class="slash">Online, / we don't have the patience / to wait for / your big reveal / at the end.</div>
+<div class="literal">온라인에서 / 우리에게는 인내심이 없다 / 기다릴 / 당신의 큰 폭로를 / 마지막에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 명사 + to부정사 (형용사적 용법)</span> <span class="gm-ex">▶ the patience [to wait for ~] — patience를 수식</span> <span class="gm-pt">★ "기다릴 인내심"; 명사를 수식하는 to부정사의 형용사적 용법 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ wait for + 명사 (구동사)</span> <span class="gm-ex">▶ wait for your big reveal</span> <span class="gm-pt">★ wait는 자동사이므로 목적어 앞에 전치사 for 필수 — 영작 단골 함정</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">Instead, you need to tell us up front: "I proved this! And here's how I know it..."</div>
+<div class="slash">Instead, / you need / to tell us / up front: / "I proved this! / And here's how I know it..."</div>
+<div class="literal">대신, / 당신은 ~할 필요가 있다 / 우리에게 말할 / 처음부터 솔직하게 / "나는 이것을 증명했다! / 그리고 여기 내가 그것을 아는 방법이 있다…"</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 4형식 동사 tell (수여동사)</span> <span class="gm-ex">▶ tell us up front: "…"</span> <span class="gm-pt">★ tell + 간접목적어(us) + 직접목적어(인용절) 구조; 직접목적어가 인용문일 때도 동일</span></div>
+<div class="grammar-item"><span class="gm-name">◆ up front (부사구)</span> <span class="gm-ex">▶ "솔직하게, 처음부터"</span> <span class="gm-pt">★ at the outset / at the beginning과 의미상 호환 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ here's how + 주어 + 동사 (강조 도치)</span> <span class="gm-ex">▶ here's how I know it = this is how I know it</span> <span class="gm-pt">★ "여기에 ~한 방법이 있다" — 관계부사 how는 the way와 함께 쓰지 않음(중복 금지)</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">Your readership may still dwindle and trail off over the course of your writing, but at least the vast majority know what it is you've achieved from the very beginning.</div>
+<div class="slash">Your readership / may still dwindle and trail off / over the course of your writing, / but at least / the vast majority know / what it is / you've achieved / from the very beginning.</div>
+<div class="literal">당신의 독자 수는 / 여전히 줄어들고 사라질 수 있다 / 글이 진행되는 동안 / 그러나 적어도 / 대다수가 안다 / 무엇인지를 / 당신이 성취한 것 / 처음부터</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 조동사 may + 동사원형 병렬</span> <span class="gm-ex">▶ may still [dwindle] and [trail off]</span> <span class="gm-pt">★ 조동사 뒤에 두 개의 동사원형이 and로 병렬; 시제·형태 일치 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ It is ~ that 강조구문 (의문형 변형)</span> <span class="gm-ex">▶ what it is [(that) you've achieved] = "당신이 성취한 것이 무엇인지"</span> <span class="gm-pt">★ what you've achieved를 강조한 형태; 간접의문문 어순 know + 의문사절</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 현재완료 (경험·결과)</span> <span class="gm-ex">▶ you've achieved (= you have achieved)</span> <span class="gm-pt">★ "과거에 성취한 것이 현재까지 영향" — 결과적 의미; from the very beginning과 호응</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 집합명사 the vast majority + 동사 수</span> <span class="gm-ex">▶ the vast majority know</span> <span class="gm-pt">★ majority가 사람을 가리킬 때 복수 취급 → know(s 없음); 어법 출제 단골</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">A few more of them may stay along for the ride if the opening line — the "hook," in journalistic terms — is particularly interesting.</div>
+<div class="slash">A few more of them / may stay along for the ride / if the opening line / — the "hook," in journalistic terms — / is particularly interesting.</div>
+<div class="literal">그들 중 몇 명 더 / 함께 머무를지 모른다 / 첫 문장이 / — 언론 용어로 '훅(hook)' — / 특별히 흥미롭다면</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 대시(—)를 활용한 동격 삽입</span> <span class="gm-ex">▶ the opening line — the "hook," in journalistic terms —</span> <span class="gm-pt">★ 주어(the opening line)와 동격 어구를 대시 안에 삽입; 본동사는 is</span></div>
+<div class="grammar-item"><span class="gm-name">◆ stay along for the ride (관용 표현)</span> <span class="gm-ex">▶ "함께 따라가다, 끝까지 동참하다"</span> <span class="gm-pt">★ go along for the ride와 호환; "흐름을 따라간다"는 비유적 표현</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 조건절 if + 현재시제</span> <span class="gm-ex">▶ if the opening line is particularly interesting</span> <span class="gm-pt">★ 일반적 사실 조건 — 직설법 현재형으로 가정; 가정법과 구분</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">If you grab their attention early, you can more likely convince more readers to stay for the whole story.</div>
+<div class="slash">If you grab / their attention / early, / you can more likely convince / more readers / to stay / for the whole story.</div>
+<div class="literal">만약 당신이 사로잡는다면 / 그들의 주의를 / 일찍 / 당신은 더 잘 설득할 수 있다 / 더 많은 독자를 / 머무르도록 / 전체 글을 위해</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ convince + O + to부정사 (5형식)</span> <span class="gm-ex">▶ convince more readers [to stay for the whole story]</span> <span class="gm-pt">★ "O가 ~하도록 설득하다"; persuade와 동일 구조 — 어법·영작 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ grab one's attention (관용 표현)</span> <span class="gm-ex">▶ "주의를 사로잡다, 관심을 끌다"</span> <span class="gm-pt">★ catch/capture/draw one's attention과 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ more likely (부사적 비교급)</span> <span class="gm-ex">▶ can more likely convince ~</span> <span class="gm-pt">★ "더 잘, 더 가능성 있게"; 동사 convince를 수식하는 부사구</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p2-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">academia</div><div class="word-ko">학계, 학문 세계</div><div class="word-pos">n.</div><div class="word-deriv">academic (adj.), academy (n.)</div></div>
+<div class="word-row"><div class="word-en">write up</div><div class="word-ko">정리해서 쓰다, 작성하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">hypothesis</div><div class="word-ko">가설</div><div class="word-pos">n.</div><div class="word-deriv">hypothesize (v.), hypothetical (adj.)</div></div>
+<div class="word-row"><div class="word-en">come up with</div><div class="word-ko">생각해 내다, 떠올리다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">groundbreaking</div><div class="word-ko">획기적인, 혁신적인</div><div class="word-pos">adj.</div><div class="word-deriv">groundbreaker (n.)</div></div>
+<div class="word-row"><div class="word-en">make it to</div><div class="word-ko">~에 도달하다, 해내다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">patience</div><div class="word-ko">인내심, 참을성</div><div class="word-pos">n.</div><div class="word-deriv">patient (adj.), patiently (adv.)</div></div>
+<div class="word-row"><div class="word-en">reveal</div><div class="word-ko">폭로, 드러냄 / 드러내다</div><div class="word-pos">n./v.</div><div class="word-deriv">revelation (n.)</div></div>
+<div class="word-row"><div class="word-en">up front</div><div class="word-ko">처음부터, 솔직하게</div><div class="word-pos">adv.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">readership</div><div class="word-ko">독자 수, 독자층</div><div class="word-pos">n.</div><div class="word-deriv">reader (n.), read (v.)</div></div>
+<div class="word-row"><div class="word-en">dwindle</div><div class="word-ko">줄어들다, 감소하다</div><div class="word-pos">v.</div><div class="word-deriv">dwindling (adj.)</div></div>
+<div class="word-row"><div class="word-en">trail off</div><div class="word-ko">점차 사라지다, 흐지부지 끝나다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">the vast majority</div><div class="word-ko">대다수</div><div class="word-pos">n.phr.</div><div class="word-deriv">majority (n.), major (adj.)</div></div>
+<div class="word-row"><div class="word-en">hook</div><div class="word-ko">(글·노래의) 사람을 끄는 부분</div><div class="word-pos">n.</div><div class="word-deriv">hooked (adj.)</div></div>
+<div class="word-row"><div class="word-en">grab one's attention</div><div class="word-ko">주의를 끌다</div><div class="word-pos">v.phr.</div><div class="word-deriv">grab (v.)</div></div>
+<div class="word-row"><div class="word-en">convince</div><div class="word-ko">설득하다, 납득시키다</div><div class="word-pos">v.</div><div class="word-deriv">convinced (adj.), conviction (n.)</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p2-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+학계에서는 결과를 다음과 같은 방식으로 정리하여 쓰도록 배운다. "나는 가설을 세웠고, 이 실험을 했으며, 또 다른 실험을 했고, 내 생각을 좀 더 검증했고, 그렇게 계속하다가 마침내 [드라마틱한 팡파르] 짠! 나는 이것을 증명했다." 만약 온라인에서 이런 식으로 글을 쓴다면, 그 내용이 아무리 흥미롭거나 획기적이라 해도 극소수의 독자만이 당신의 극적인 결론까지 도달할 것이다. 온라인에서 우리는 마지막에 등장하는 당신의 큰 폭로를 기다릴 인내심이 없다. 대신 당신은 처음부터 우리에게 말해야 한다. "나는 이것을 증명했다! 그리고 여기 내가 그것을 안 방법이 있다…"라고. 글이 진행되면서 당신의 독자층은 여전히 줄어들고 흐지부지 사라질 수 있지만, 적어도 대다수의 독자는 당신이 무엇을 성취했는지를 처음부터 알게 된다. 만약 첫 문장 — 언론 용어로 '훅(hook)' — 이 특히 흥미롭다면 그들 중 몇 명은 더 끝까지 함께할지도 모른다. 일찍 그들의 주의를 사로잡는다면, 더 많은 독자가 글 전체를 끝까지 읽도록 설득할 가능성이 더 커진다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p2-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">온라인 글쓰기에서 결론을 먼저 제시할 필요성 (The need to put conclusions up front in online writing)</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">학술적 글쓰기처럼 결론을 끝에 두는 방식은 온라인에서는 통하지 않으며, 결론과 흥미로운 '훅'을 글머리에 배치해야 독자의 주의를 끌어 끝까지 읽도록 유도할 수 있다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 도입</span>학계의 글쓰기 방식: 과정 → 결론 순서 (전통적 구성)</div>
+<div class="flow-step"><span class="step-num">② 문제 제기</span>온라인에서는 결론까지 기다릴 인내심이 없다</div>
+<div class="flow-step"><span class="step-num">③ 해결책 제시</span>대신 결론을 처음에 제시 + 흥미로운 'hook' 활용</div>
+<div class="flow-step"><span class="step-num">④ 결론</span>일찍 주의를 끌면 더 많은 독자를 끝까지 붙잡을 수 있다</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p2-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. 학술 논문의 IMRaD 구조</h4>
+<p>전통적인 학술 논문은 일반적으로 <strong>IMRaD</strong> (Introduction–Methods–Results–Discussion) 구조를 따른다. 도입에서 가설을 제시하고, 방법으로 어떻게 검증했는지를 서술하고, 결과를 보고한 뒤, 토론에서 결론을 도출하는 흐름이다. 본문이 묘사하는 "가설 → 실험 → 또 다른 실험 → 결론" 방식이 바로 이 전통적 학술 글쓰기 모델이다.</p>
+
+<h4>2. 역피라미드 구조 (Inverted Pyramid)</h4>
+<p>저널리즘에서는 오랫동안 <strong>역피라미드 구조</strong>를 사용해 왔다. 가장 중요한 정보(결론·핵심 사실)를 기사 첫머리(lead)에 두고, 점차 덜 중요한 세부 사항을 뒤로 배치하는 방식이다. 독자가 어느 시점에서 읽기를 멈춰도 핵심을 파악할 수 있도록 설계되어 있어, 온라인 환경에 매우 적합하다.</p>
+
+<h4>3. Hook(훅)이란?</h4>
+<p>'Hook'은 본래 낚시 '낚싯바늘'을 뜻하지만, <strong>저널리즘·콘텐츠 글쓰기에서는 독자의 관심을 단번에 사로잡는 첫 문장 또는 첫 문단</strong>을 의미한다. 강력한 통계, 충격적 인용문, 도발적인 질문, 흥미로운 일화 등이 흔히 쓰인다. 음악에서도 청자의 귀에 박히는 반복 멜로디를 hook이라 부른다.</p>
+
+<h4>4. 디지털 시대의 독자 행동</h4>
+<p>닐슨 노먼 그룹(Nielsen Norman Group) 등의 사용성 연구에 따르면, 웹 독자들은 글을 처음부터 끝까지 읽기보다는 <strong>F자 패턴으로 훑어보는(scanning)</strong> 경향이 강하며, 평균적으로 첫 화면에서 핵심을 파악하지 못하면 페이지를 떠난다. 이러한 행동 패턴이 본문이 강조하는 "결론을 앞으로" 원칙의 실증적 근거가 된다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p2-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q2-1">
+<li onclick="check(2,1,1,false)"><span class="opt-num">①</span> 학술 논문 작성의 표준 절차</li>
+<li onclick="check(2,1,2,false)"><span class="opt-num">②</span> 가설을 검증하는 실험 방법론</li>
+<li onclick="check(2,1,3,true)"><span class="opt-num">③</span> 온라인 글쓰기에서 결론과 훅을 먼저 배치할 필요성</li>
+<li onclick="check(2,1,4,false)"><span class="opt-num">④</span> 저널리즘과 학문 분야 간 신뢰도 차이</li>
+<li onclick="check(2,1,5,false)"><span class="opt-num">⑤</span> 독자 수를 늘리기 위한 SNS 활용 전략</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-1"></div>
+<button class="reset-btn" onclick="resetQuiz(2,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">Online, we don't have the patience to wait for your big reveal at the end. Instead, you need to tell us ____________: "I proved this! And here's how I know it..."</div>
+<ul class="quiz-opts" id="q2-2">
+<li onclick="check(2,2,1,false)"><span class="opt-num">①</span> in detail</li>
+<li onclick="check(2,2,2,true)"><span class="opt-num">②</span> up front</li>
+<li onclick="check(2,2,3,false)"><span class="opt-num">③</span> step by step</li>
+<li onclick="check(2,2,4,false)"><span class="opt-num">④</span> at the end</li>
+<li onclick="check(2,2,5,false)"><span class="opt-num">⑤</span> in academic style</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-2"></div>
+<button class="reset-btn" onclick="resetQuiz(2,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">If you wrote this way online, very few of your readers ①would make it to your dramatic conclusion, no matter how ②exciting or groundbreaking it was. Online, we don't have the patience ③to wait for your big reveal at the end. … The vast majority ④knows what it is you've achieved from the very beginning. … If you grab their attention early, you ⑤can more likely convince more readers to stay for the whole story.</div>
+<ul class="quiz-opts" id="q2-3">
+<li onclick="check(2,3,1,false)"><span class="opt-num">①</span> would make</li>
+<li onclick="check(2,3,2,false)"><span class="opt-num">②</span> exciting</li>
+<li onclick="check(2,3,3,false)"><span class="opt-num">③</span> to wait</li>
+<li onclick="check(2,3,4,true)"><span class="opt-num">④</span> knows → know</li>
+<li onclick="check(2,3,5,false)"><span class="opt-num">⑤</span> can more likely</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-3"></div>
+<button class="reset-btn" onclick="resetQuiz(2,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q2-4">
+<li onclick="check(2,4,1,false)"><span class="opt-num">①</span> 학계에서는 가설 → 실험 → 결론의 순서로 결과를 정리하도록 가르친다.</li>
+<li onclick="check(2,4,2,false)"><span class="opt-num">②</span> 온라인 독자들은 마지막의 극적인 결론을 기다릴 인내심이 부족하다.</li>
+<li onclick="check(2,4,3,true)"><span class="opt-num">③</span> 온라인에서도 결론을 끝에 두는 학술적 글쓰기가 가장 효과적이다.</li>
+<li onclick="check(2,4,4,false)"><span class="opt-num">④</span> 흥미로운 첫 문장(hook)은 독자를 더 오래 머물게 할 수 있다.</li>
+<li onclick="check(2,4,5,false)"><span class="opt-num">⑤</span> 일찍 주의를 끌면 더 많은 독자를 글 끝까지 설득할 수 있다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-4"></div>
+<button class="reset-btn" onclick="resetQuiz(2,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> In academia, you are taught to write up your results thus: "I came up with a hypothesis, then I did this experiment, … ta-da! I proved this."<br><br>
+<strong>(A)</strong> Instead, you need to tell us up front: "I proved this! And here's how I know it..." Your readership may still dwindle and trail off, but at least the vast majority know what it is you've achieved from the very beginning.<br>
+<strong>(B)</strong> If you wrote this way online, very few of your readers would make it to your dramatic conclusion, no matter how exciting or groundbreaking it was. Online, we don't have the patience to wait for your big reveal at the end.<br>
+<strong>(C)</strong> A few more of them may stay along for the ride if the opening line — the "hook," in journalistic terms — is particularly interesting. If you grab their attention early, you can more likely convince more readers to stay for the whole story.
+</div>
+<ul class="quiz-opts" id="q2-5">
+<li onclick="check(2,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(2,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(2,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(2,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(2,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-5"></div>
+<button class="reset-btn" onclick="resetQuiz(2,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">Unlike academic writing, online writing requires presenting the conclusion <strong>(A) __________</strong>, and using an interesting "<strong>(B) __________</strong>" in the opening line to capture readers' attention from the very beginning.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(2,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans2-1">
+<strong>(A)</strong> front (up front에서 핵심어) &nbsp;|&nbsp; <strong>(B)</strong> hook<br>
+<strong>해설:</strong> 본문 ④번 문장 "you need to tell us <em>up front</em>"과 ⑥번 문장 "the opening line — the '<em>hook</em>,' in journalistic terms"에서 핵심 단어를 추출한다. (A)는 'front'가 더 정확하며, 'up front' 전체로 인정.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 글쓴이가 온라인 글쓰기에서 결론을 먼저 제시하라고 주장하는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 30 단어 내외 · "patience", "online" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(2,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans2-2">
+<strong>모범답안:</strong> Because online readers do not have the patience to wait for a big reveal at the end, the conclusion must be presented up front so that most readers can know what has been achieved from the very beginning.<br><br>
+<strong>해설:</strong> 본문 ③번 "Online, we don't have the patience to wait for your big reveal at the end"과 ⑤번 "the vast majority know what it is you've achieved from the very beginning"을 결합하여 인과 관계로 정리한 답안.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 2 끝 ============ -->
+<!-- ============ 지문 3: Vicarious Functioning ============ -->
+<div class="passage-block" id="p3">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(3,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(3,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(3,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(3,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(3,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(3,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(3,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p3-full">
+<div class="card">
+<h3>Vicarious Functioning</h3>
+<div class="sub">변화하는 세계에 적응하는 뇌의 대리 기능</div>
+<div class="full-text">
+The human perceptual system is designed to recognize objects under changing illuminations, situations, and contexts. It is extraordinarily adapted to a constantly changing world. To deal with this uncertainty, the brain uses not one, but multiple routes. If one is blocked, it takes another route. This immense flexibility of the brain to rely on changing cues, according to whatever is available, is known as vicarious functioning. It can be found in most biological systems. For instance, migrating birds fly thousands of miles and may rely on the stars to navigate. But if it's a cloudy day, they may instead rely on landmarks or their magnetic sense. Similarly, the brain can recognize a face by the shape of the eyes, nose, and mouth. In extreme cases, only a few lines are sufficient, as when we recognize the face of a celebrity in caricatures made with just a few pencil strokes. Face recognition also functions even when parts of a face are covered and internal features such as eyes are hardly visible. In this case, the brain relies on external features such as hair and head shape.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p3-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+The human perceptual system is designed to recognize objects under changing illuminations, situations, and contexts. It is extraordinarily adapted to a constantly changing world. To deal with this uncertainty, the brain uses not one, but multiple routes. If one is blocked, it takes another route. This immense flexibility of the brain to rely on changing cues, according to whatever is available, is known as vicarious functioning. It can be found in most biological systems. For instance, migrating birds fly thousands of miles and may rely on the stars to navigate. But if it's a cloudy day, they may instead rely on landmarks or their magnetic sense. Similarly, the brain can recognize a face by the shape of the eyes, nose, and mouth. In extreme cases, only a few lines are sufficient, as when we recognize the face of a celebrity in caricatures made with just a few pencil strokes. Face recognition also functions even when parts of a face are covered and internal features such as eyes are hardly visible. In this case, the brain relies on external features such as hair and head shape.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">The human perceptual system is designed to recognize objects under changing illuminations, situations, and contexts.</div>
+<div class="slash">The human perceptual system / is designed / to recognize objects / under changing illuminations, situations, and contexts.</div>
+<div class="literal">인간의 지각 체계는 / 설계되어 있다 / 사물을 인식하도록 / 변화하는 조명, 상황, 맥락 속에서</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ be designed to V (수동 + 목적의 to부정사)</span> <span class="gm-ex">▶ is designed to recognize objects</span> <span class="gm-pt">★ "~하도록 설계되다" — 의도·기능을 표현; 수동태에서 to부정사는 그대로 유지</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 현재분사 changing (능동의 의미)</span> <span class="gm-ex">▶ changing illuminations, situations, and contexts</span> <span class="gm-pt">★ 명사가 스스로 변화하므로 능동의 -ing; changed(수동) 사용 시 오류</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 명사 3개 병렬 (콤마 + and)</span> <span class="gm-ex">▶ illuminations, situations, and contexts</span> <span class="gm-pt">★ 세 명사 이상 병렬 시 마지막 앞에 and; 옥스퍼드 콤마 적용</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">It is extraordinarily adapted to a constantly changing world.</div>
+<div class="slash">It is extraordinarily adapted / to a constantly changing world.</div>
+<div class="literal">그것은 매우 잘 적응되어 있다 / 끊임없이 변화하는 세계에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ be adapted to + 명사 (수동태)</span> <span class="gm-ex">▶ is adapted to a constantly changing world</span> <span class="gm-pt">★ "~에 적응되어 있다"; adapt to(자동사)와 be adapted to(수동) 구분</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사 + 현재분사 (분사구 구성)</span> <span class="gm-ex">▶ a constantly changing world</span> <span class="gm-pt">★ 부사 constantly가 현재분사 changing을 수식하여 명사 world를 한정 — 어법 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">To deal with this uncertainty, the brain uses not one, but multiple routes.</div>
+<div class="slash">To deal with this uncertainty, / the brain uses / not one, but multiple routes.</div>
+<div class="literal">이러한 불확실성에 대처하기 위해 / 뇌는 사용한다 / 하나가 아니라 여러 경로를</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 부사적 용법 (목적)</span> <span class="gm-ex">▶ To deal with this uncertainty, ~</span> <span class="gm-pt">★ "~하기 위해" — 문두에서 목적을 표현; in order to/so as to로 환언 가능</span></div>
+<div class="grammar-item"><span class="gm-name">◆ not A but B (상관접속사)</span> <span class="gm-ex">▶ not one, but multiple routes</span> <span class="gm-pt">★ "A가 아니라 B" — 강조 구문; B에 의미적 강세, 어법·영작 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ deal with (구동사)</span> <span class="gm-ex">▶ 다루다, 대처하다</span> <span class="gm-pt">★ cope with / handle / address와 동의어; 어휘 동의어 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">If one is blocked, it takes another route.</div>
+<div class="slash">If one is blocked, / it takes another route.</div>
+<div class="literal">만약 하나가 막히면 / 그것은 또 다른 경로를 택한다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 부정대명사 one ~ another</span> <span class="gm-ex">▶ one (하나) ~ another (또 다른 하나)</span> <span class="gm-pt">★ 여럿 중 막연한 하나를 가리키는 one; the other(나머지 하나)와 구분 — 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 직설법 조건절 (현재시제)</span> <span class="gm-ex">▶ If one is blocked, it takes ~</span> <span class="gm-pt">★ 일반적 사실/습관적 조건은 현재시제 — 가정법 과거와 구분</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">This immense flexibility of the brain to rely on changing cues, according to whatever is available, is known as vicarious functioning.</div>
+<div class="slash">This immense flexibility of the brain / to rely on changing cues, / according to whatever is available, / is known as vicarious functioning.</div>
+<div class="literal">뇌의 이러한 엄청난 유연성은 / 변화하는 단서에 의존하는 / 이용 가능한 무엇이든에 따라 / 대리 기능이라고 알려져 있다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 형용사적 용법 (명사 수식)</span> <span class="gm-ex">▶ flexibility [to rely on changing cues] — flexibility 수식</span> <span class="gm-pt">★ "~할 유연성" — 명사를 수식하는 to부정사; ability/chance/right 등과 같은 추상명사와 자주 결합</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 복합관계대명사 whatever (명사절)</span> <span class="gm-ex">▶ according to [whatever is available] — 전치사의 목적어</span> <span class="gm-pt">★ "~한 무엇이든" = anything that; 명사절을 이끌며 절 안에서 주어 역할 — 출제 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ be known as + 명사 (~로 알려져 있다)</span> <span class="gm-ex">▶ is known as vicarious functioning</span> <span class="gm-pt">★ be known as(자격/명칭) vs be known for(이유)vs be known to(대상) 구분 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 긴 주어의 수일치</span> <span class="gm-ex">▶ This ~ flexibility ~ to rely on ~ , according to ~ , <strong>is</strong> known as ~</span> <span class="gm-pt">★ 주어의 핵 = flexibility (단수) → 동사 is; 중간 삽입구에 현혹되지 말 것</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">It can be found in most biological systems.</div>
+<div class="slash">It can be found / in most biological systems.</div>
+<div class="literal">그것은 발견될 수 있다 / 대부분의 생물학적 체계에서</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 조동사 + 수동태 (can be p.p.)</span> <span class="gm-ex">▶ can be found</span> <span class="gm-pt">★ 조동사 뒤에는 동사원형 → be + p.p.; can + find 능동 vs can be found 수동 구분</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대명사 it의 지시 대상</span> <span class="gm-ex">▶ It = vicarious functioning (앞 문장)</span> <span class="gm-pt">★ 문맥 단서로 지시 대상 파악 — 빈칸 추론·문장 삽입 출제 핵심</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">For instance, migrating birds fly thousands of miles and may rely on the stars to navigate.</div>
+<div class="slash">For instance, / migrating birds fly / thousands of miles / and may rely on the stars / to navigate.</div>
+<div class="literal">예를 들어 / 이주하는 새들은 날아간다 / 수천 마일을 / 그리고 별에 의존할 수도 있다 / 항해하기 위해</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ For instance (예시 도입)</span> <span class="gm-ex">▶ "예를 들어" = For example</span> <span class="gm-pt">★ 구체적 예시를 도입하는 연결어 — 글의 흐름·문장 삽입 단서</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 현재분사의 형용사적 용법</span> <span class="gm-ex">▶ migrating birds — birds를 수식</span> <span class="gm-pt">★ 새들이 스스로 이주하므로 현재분사(능동); migrated(수동) 오류</span></div>
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 부사적 용법 (목적)</span> <span class="gm-ex">▶ rely on the stars to navigate</span> <span class="gm-pt">★ "항해하기 위해" — to부정사가 목적을 표현; in order to navigate로 환언</span></div>
+</div>
+</div>
+
+<!-- 문장 8 -->
+<div class="sentence-block">
+<span class="sent-num">⑧</span>
+<div class="eng-box">But if it's a cloudy day, they may instead rely on landmarks or their magnetic sense.</div>
+<div class="slash">But if it's a cloudy day, / they may instead rely on / landmarks / or their magnetic sense.</div>
+<div class="literal">그러나 만약 흐린 날이라면 / 그들은 대신 의존할 수도 있다 / 지형지물에 / 또는 그들의 자기 감각에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 비인칭 주어 it (날씨)</span> <span class="gm-ex">▶ if it's a cloudy day</span> <span class="gm-pt">★ 날씨·시간·거리·명암 등에 사용; 해석하지 않는 형식 주어 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ rely on A or B (병렬)</span> <span class="gm-ex">▶ rely on [landmarks] or [their magnetic sense]</span> <span class="gm-pt">★ 전치사 on의 목적어 두 개가 or로 병렬; 등위접속사 병렬 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사 instead (대신에)</span> <span class="gm-ex">▶ they may instead rely on ~</span> <span class="gm-pt">★ 대안·전환을 나타내는 부사; 문장 중간/끝에 위치 가능 — 어순 주의</span></div>
+</div>
+</div>
+
+<!-- 문장 9 -->
+<div class="sentence-block">
+<span class="sent-num">⑨</span>
+<div class="eng-box">Similarly, the brain can recognize a face by the shape of the eyes, nose, and mouth.</div>
+<div class="slash">Similarly, / the brain can recognize / a face / by the shape of / the eyes, nose, and mouth.</div>
+<div class="literal">마찬가지로 / 뇌는 인식할 수 있다 / 얼굴을 / ~의 모양으로 / 눈, 코, 그리고 입의</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 부사 Similarly (유사 도입)</span> <span class="gm-ex">▶ "마찬가지로, 비슷하게"</span> <span class="gm-pt">★ 앞의 예시(birds)와 유사한 사례를 도입; Likewise/In the same way와 동의</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 전치사 by + 수단</span> <span class="gm-ex">▶ recognize a face by the shape of ~</span> <span class="gm-pt">★ "~에 의해/~로써" — 인식·판단의 수단; by + 명사 어법 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 10 -->
+<div class="sentence-block">
+<span class="sent-num">⑩</span>
+<div class="eng-box">In extreme cases, only a few lines are sufficient, as when we recognize the face of a celebrity in caricatures made with just a few pencil strokes.</div>
+<div class="slash">In extreme cases, / only a few lines are sufficient, / as when we recognize / the face of a celebrity / in caricatures / made with just a few pencil strokes.</div>
+<div class="literal">극단적인 경우에는 / 단지 몇 개의 선만으로 충분하다 / 우리가 인식할 때처럼 / 유명인의 얼굴을 / 캐리커처에서 / 단 몇 번의 연필 획으로 그려진</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ as + 부사절 (예시·비교의 as)</span> <span class="gm-ex">▶ as when we recognize ~</span> <span class="gm-pt">★ "~할 때처럼" — 구체적 사례를 들어 설명; "처럼/같이"의 비교 의미</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 후치수식 (수동)</span> <span class="gm-ex">▶ caricatures [made with just a few pencil strokes]</span> <span class="gm-pt">★ 캐리커처가 그려진(수동) → 과거분사 made; which were made의 축약 형태</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 수일치: a few + 복수명사 + 복수동사</span> <span class="gm-ex">▶ only a few lines <strong>are</strong> sufficient</span> <span class="gm-pt">★ a few는 복수 의미 → 복수동사 are; little/few 구분 어법 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 11 -->
+<div class="sentence-block">
+<span class="sent-num">⑪</span>
+<div class="eng-box">Face recognition also functions even when parts of a face are covered and internal features such as eyes are hardly visible.</div>
+<div class="slash">Face recognition also functions / even when / parts of a face are covered / and internal features such as eyes / are hardly visible.</div>
+<div class="literal">얼굴 인식은 또한 작동한다 / ~할 때조차 / 얼굴의 일부가 가려질 / 그리고 눈과 같은 내부 특징이 / 거의 보이지 않을</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ even when ~ (양보 부사절)</span> <span class="gm-ex">▶ "~할 때조차도"</span> <span class="gm-pt">★ 강조의 even + 시간/조건의 when; 양보의 의미로 본문 핵심 전개</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 두 개의 부사절 절 병렬</span> <span class="gm-ex">▶ [parts of a face are covered] and [internal features ~ are hardly visible]</span> <span class="gm-pt">★ when이 이끄는 절 안에서 두 절이 and로 병렬; 시제·태 일치 어법 주의</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부분 부정의 부사 hardly</span> <span class="gm-ex">▶ are hardly visible (= 거의 보이지 않다)</span> <span class="gm-pt">★ hardly = "거의 ~않다" — 부정의 의미; not hardly로 쓰면 이중부정 오류</span></div>
+</div>
+</div>
+
+<!-- 문장 12 -->
+<div class="sentence-block">
+<span class="sent-num">⑫</span>
+<div class="eng-box">In this case, the brain relies on external features such as hair and head shape.</div>
+<div class="slash">In this case, / the brain relies on / external features / such as hair and head shape.</div>
+<div class="literal">이 경우 / 뇌는 의존한다 / 외부 특징에 / 머리카락과 머리 모양 같은</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ such as + 명사 (예시 도입)</span> <span class="gm-ex">▶ such as hair and head shape</span> <span class="gm-pt">★ "~과 같은" — 예시 제시; like와 호환되지만 such as가 문어체에서 선호됨</span></div>
+<div class="grammar-item"><span class="gm-name">◆ rely on (구동사)</span> <span class="gm-ex">▶ "~에 의존하다"</span> <span class="gm-pt">★ depend on / count on과 동의; 본문에서 vicarious functioning의 핵심 동사로 반복 사용</span></div>
+<div class="grammar-item"><span class="gm-name">◆ external ↔ internal (반의어 대조)</span> <span class="gm-ex">▶ ⑪문장 internal features ↔ ⑫문장 external features</span> <span class="gm-pt">★ 글의 전개 구조: 내부 단서 차단 → 외부 단서로 전환 = vicarious functioning의 핵심 사례</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p3-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">perceptual</div><div class="word-ko">지각의, 인지의</div><div class="word-pos">adj.</div><div class="word-deriv">perceive (v.), perception (n.)</div></div>
+<div class="word-row"><div class="word-en">recognize</div><div class="word-ko">인식하다, 알아보다</div><div class="word-pos">v.</div><div class="word-deriv">recognition (n.), recognizable (adj.)</div></div>
+<div class="word-row"><div class="word-en">illumination</div><div class="word-ko">조명, 빛</div><div class="word-pos">n.</div><div class="word-deriv">illuminate (v.)</div></div>
+<div class="word-row"><div class="word-en">extraordinarily</div><div class="word-ko">매우, 비범하게</div><div class="word-pos">adv.</div><div class="word-deriv">extraordinary (adj.)</div></div>
+<div class="word-row"><div class="word-en">adapt to</div><div class="word-ko">~에 적응하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">adaptation (n.), adaptive (adj.)</div></div>
+<div class="word-row"><div class="word-en">deal with</div><div class="word-ko">대처하다, 다루다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">uncertainty</div><div class="word-ko">불확실성</div><div class="word-pos">n.</div><div class="word-deriv">uncertain (adj.), certain (반의어)</div></div>
+<div class="word-row"><div class="word-en">route</div><div class="word-ko">경로, 길</div><div class="word-pos">n.</div><div class="word-deriv">routing (n.)</div></div>
+<div class="word-row"><div class="word-en">immense</div><div class="word-ko">엄청난, 거대한</div><div class="word-pos">adj.</div><div class="word-deriv">immensely (adv.)</div></div>
+<div class="word-row"><div class="word-en">flexibility</div><div class="word-ko">유연성, 융통성</div><div class="word-pos">n.</div><div class="word-deriv">flexible (adj.)</div></div>
+<div class="word-row"><div class="word-en">cue</div><div class="word-ko">단서, 신호</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">vicarious</div><div class="word-ko">대리의, 간접적인</div><div class="word-pos">adj.</div><div class="word-deriv">vicariously (adv.)</div></div>
+<div class="word-row"><div class="word-en">migrating</div><div class="word-ko">이주하는</div><div class="word-pos">adj.</div><div class="word-deriv">migrate (v.), migration (n.)</div></div>
+<div class="word-row"><div class="word-en">navigate</div><div class="word-ko">항해하다, 길을 찾다</div><div class="word-pos">v.</div><div class="word-deriv">navigation (n.), navigator (n.)</div></div>
+<div class="word-row"><div class="word-en">landmark</div><div class="word-ko">지형지물, 명소</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">caricature</div><div class="word-ko">캐리커처, 풍자화</div><div class="word-pos">n.</div><div class="word-deriv">caricaturist (n.)</div></div>
+<div class="word-row"><div class="word-en">internal ↔ external</div><div class="word-ko">내부의 ↔ 외부의</div><div class="word-pos">adj.</div><div class="word-deriv">internally / externally (adv.)</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p3-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+인간의 지각 체계는 변화하는 조명, 상황, 맥락 속에서 사물을 인식하도록 설계되어 있다. 그것은 끊임없이 변화하는 세계에 비범하게 잘 적응되어 있다. 이러한 불확실성에 대처하기 위해 뇌는 하나가 아닌 여러 경로를 사용한다. 어떤 경로가 막히면 다른 경로를 택한다. 이용 가능한 무엇이든에 따라 변화하는 단서에 의존하는 뇌의 이러한 엄청난 유연성을 '대리 기능(vicarious functioning)'이라 부른다. 이것은 대부분의 생물학적 체계에서 발견된다. 예를 들어, 이주하는 새들은 수천 마일을 날아가는데, 항해를 위해 별에 의존하기도 한다. 그러나 흐린 날이라면 그들은 대신 지형지물이나 자기 감각에 의존할 수도 있다. 마찬가지로 뇌는 눈, 코, 입의 모양으로 얼굴을 인식할 수 있다. 극단적인 경우, 단 몇 개의 선만으로도 충분하다. 우리가 단 몇 번의 연필 획으로 그려진 캐리커처에서 유명인의 얼굴을 알아볼 때처럼 말이다. 얼굴 인식은 얼굴의 일부가 가려져 눈과 같은 내부 특징이 거의 보이지 않을 때조차 작동한다. 이 경우 뇌는 머리카락과 머리 모양 같은 외부 특징에 의존한다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p3-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">뇌의 대리 기능(vicarious functioning) — 변화하는 단서에 유연하게 적응하는 인지 체계</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">인간의 지각 체계와 뇌는 단일 경로가 아닌 여러 단서를 활용하여 변화하는 환경에 적응하며, 이 유연한 다중 경로 의존성은 철새의 길찾기나 얼굴 인식 등 다양한 생물학적 체계에서 공통적으로 나타난다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 도입</span>지각 체계는 변화하는 환경에 적응하도록 설계됨</div>
+<div class="flow-step"><span class="step-num">② 개념 정의</span>다중 경로 사용 → 대리 기능(vicarious functioning)</div>
+<div class="flow-step"><span class="step-num">③ 사례 1</span>철새: 별 → (흐릴 때) 지형지물·자기 감각</div>
+<div class="flow-step"><span class="step-num">④ 사례 2·결론</span>얼굴 인식: 내부 특징 → (가려질 때) 외부 특징</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p3-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. Vicarious Functioning(대리 기능)이란?</h4>
+<p>'Vicarious functioning'은 미국 심리학자 <strong>에곤 브런스윅(Egon Brunswik, 1903–1955)</strong>이 처음 도입한 개념으로, 유기체가 변화하는 환경에서 <strong>여러 대체 가능한 단서(cue)들 중 이용 가능한 것을 골라 사용하는 유연한 인지 전략</strong>을 가리킨다. vicarious는 라틴어 'vicarius(대신하는)'에서 왔으며, "한 단서가 다른 단서를 대신할 수 있다"는 의미를 담는다.</p>
+
+<h4>2. 철새의 항법 메커니즘</h4>
+<p>철새들은 매년 수천 km를 이동하며 다양한 길찾기 수단을 사용한다. (1) <strong>천체 항법(celestial navigation)</strong>: 별, 태양의 위치 활용; (2) <strong>지형지물(landmarks)</strong>: 강, 산맥, 해안선; (3) <strong>지자기 감각(magnetic sense)</strong>: 새의 망막·부리에 있는 마그네타이트 단백질로 지구 자기장을 감지. 한 단서가 막히면 다른 단서로 전환하는 것이 본문이 말하는 vicarious functioning의 대표적 사례다.</p>
+
+<h4>3. 얼굴 인식(Face Recognition)의 신경 기제</h4>
+<p>뇌의 <strong>방추형 얼굴 영역(Fusiform Face Area, FFA)</strong>은 얼굴 인식 전담 부위로, 얼굴을 부분이 아닌 <strong>전체 형상(holistic processing)</strong>으로 처리한다. 그래서 마스크로 코와 입을 가려도 머리 모양, 헤어스타일, 윤곽으로 사람을 알아볼 수 있다. 캐리커처가 몇 개의 선만으로도 인물을 알아보게 만드는 것은 뇌가 핵심 특징(distinctive features)을 추출하기 때문이다.</p>
+
+<h4>4. 인간 지각 시스템의 강건성(Robustness)</h4>
+<p>인공지능 비전 시스템과 달리 인간 뇌는 조명·각도·가림·잡음 변화에 매우 강건하다. 본문은 이를 <strong>"하나가 막히면 다른 경로를 택하는"</strong> 다중 경로(multiple routes) 구조로 설명하며, 이는 현대 신경과학·인지심리학의 핵심 발견 중 하나다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p3-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q3-1">
+<li onclick="check(3,1,1,false)"><span class="opt-num">①</span> 시각 정보 처리에서 조명이 미치는 영향</li>
+<li onclick="check(3,1,2,false)"><span class="opt-num">②</span> 철새 이동에 활용되는 자기 감각의 진화</li>
+<li onclick="check(3,1,3,true)"><span class="opt-num">③</span> 다양한 단서를 유연하게 활용하는 뇌의 대리 기능</li>
+<li onclick="check(3,1,4,false)"><span class="opt-num">④</span> 인간 얼굴 인식 능력의 한계와 오류</li>
+<li onclick="check(3,1,5,false)"><span class="opt-num">⑤</span> 캐리커처 예술의 인지 심리학적 효과</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-1"></div>
+<button class="reset-btn" onclick="resetQuiz(3,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">To deal with this uncertainty, the brain uses not one, but ____________ routes. If one is blocked, it takes another route. This immense flexibility of the brain to rely on changing cues … is known as vicarious functioning.</div>
+<ul class="quiz-opts" id="q3-2">
+<li onclick="check(3,2,1,false)"><span class="opt-num">①</span> identical</li>
+<li onclick="check(3,2,2,false)"><span class="opt-num">②</span> fixed</li>
+<li onclick="check(3,2,3,true)"><span class="opt-num">③</span> multiple</li>
+<li onclick="check(3,2,4,false)"><span class="opt-num">④</span> external</li>
+<li onclick="check(3,2,5,false)"><span class="opt-num">⑤</span> shortest</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-2"></div>
+<button class="reset-btn" onclick="resetQuiz(3,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">The human perceptual system ①is designed to recognize objects under ②changing illuminations. … This immense flexibility of the brain ③to rely on changing cues, according to whatever is available, ④are known as vicarious functioning. … In extreme cases, only a few lines ⑤are sufficient.</div>
+<ul class="quiz-opts" id="q3-3">
+<li onclick="check(3,3,1,false)"><span class="opt-num">①</span> is designed</li>
+<li onclick="check(3,3,2,false)"><span class="opt-num">②</span> changing</li>
+<li onclick="check(3,3,3,false)"><span class="opt-num">③</span> to rely</li>
+<li onclick="check(3,3,4,true)"><span class="opt-num">④</span> are → is</li>
+<li onclick="check(3,3,5,false)"><span class="opt-num">⑤</span> are</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-3"></div>
+<button class="reset-btn" onclick="resetQuiz(3,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q3-4">
+<li onclick="check(3,4,1,false)"><span class="opt-num">①</span> 인간의 지각 체계는 변화하는 조명·상황·맥락 속에서 사물을 인식하도록 설계되어 있다.</li>
+<li onclick="check(3,4,2,false)"><span class="opt-num">②</span> 뇌는 불확실성에 대처하기 위해 여러 경로를 사용한다.</li>
+<li onclick="check(3,4,3,false)"><span class="opt-num">③</span> 흐린 날에는 철새가 지형지물이나 자기 감각에 의존할 수 있다.</li>
+<li onclick="check(3,4,4,true)"><span class="opt-num">④</span> 얼굴의 일부가 가려지면 뇌는 더 이상 얼굴을 인식할 수 없다.</li>
+<li onclick="check(3,4,5,false)"><span class="opt-num">⑤</span> 캐리커처에서는 단 몇 개의 선만으로도 얼굴 인식이 가능하다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-4"></div>
+<button class="reset-btn" onclick="resetQuiz(3,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> This immense flexibility of the brain to rely on changing cues, according to whatever is available, is known as vicarious functioning. It can be found in most biological systems.<br><br>
+<strong>(A)</strong> Similarly, the brain can recognize a face by the shape of the eyes, nose, and mouth. In extreme cases, only a few lines are sufficient, as when we recognize the face of a celebrity in caricatures made with just a few pencil strokes.<br>
+<strong>(B)</strong> For instance, migrating birds fly thousands of miles and may rely on the stars to navigate. But if it's a cloudy day, they may instead rely on landmarks or their magnetic sense.<br>
+<strong>(C)</strong> Face recognition also functions even when parts of a face are covered and internal features such as eyes are hardly visible. In this case, the brain relies on external features such as hair and head shape.
+</div>
+<ul class="quiz-opts" id="q3-5">
+<li onclick="check(3,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(3,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(3,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(3,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(3,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-5"></div>
+<button class="reset-btn" onclick="resetQuiz(3,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">The brain's ability to use whichever cue is available — switching to alternative <strong>(A) __________</strong> when one is blocked — is called <strong>(B) __________</strong> functioning, and it is observed in many biological systems.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(3,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans3-1">
+<strong>(A)</strong> routes &nbsp;|&nbsp; <strong>(B)</strong> vicarious<br>
+<strong>해설:</strong> 본문 ③·④번 문장 "the brain uses … multiple <em>routes</em>. If one is blocked, it takes another route"와 ⑤번 문장 "is known as <em>vicarious</em> functioning"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 본문에 제시된 'vicarious functioning'의 사례 두 가지(철새의 항법 / 얼굴 인식)를 영어 완전한 문장으로 요약 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 1~2개 · 35 단어 내외 · "birds"와 "face" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(3,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans3-2">
+<strong>모범답안:</strong> Migrating birds rely on the stars to navigate but switch to landmarks or their magnetic sense on cloudy days, and the brain recognizes a face by internal features such as the eyes, but uses external features like hair when those internal features are hidden.<br><br>
+<strong>해설:</strong> 본문 ⑦~⑧번 문장(birds 사례)과 ⑨~⑫번 문장(face 사례)에서 각각 "주된 단서 vs 막혔을 때의 대체 단서"의 구조를 동일하게 추출하여 한 문장에 병렬 결합한다.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 3 끝 ============ -->
+<!-- ============ 지문 4: Bir Tawil Border ============ -->
+<div class="passage-block" id="p4">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(4,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(4,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(4,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(4,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(4,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(4,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(4,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p4-full">
+<div class="card">
+<h3>Bir Tawil: The Land No Country Wants</h3>
+<div class="sub">식민 시대 국경 분쟁의 역설 — 아무도 원하지 않는 땅</div>
+<div class="full-text">
+Bir Tawil is a strange place. In January 1899, administrators of the British Empire decided to finalize a border between the countries of Egypt and Sudan. In colonial fashion, they decided to use the conveniently straight line of the twenty-second parallel of latitude. Unsurprisingly, this new international border arbitrarily tore through local tribes and communities, and in 1902, the British drew a new line to reflect tribal territories. The combination of these two intersecting lines brought about the creation of two new areas: the large, inhabitable coastal area called the Hala'ib Triangle and an empty, landlocked patch of desert, which is Bir Tawil. To keep the desirable Hala'ib, Egypt understandably claimed the original, straight border of 1899, whereas Sudan — with the same goal in mind — claimed the new 1902 line. The strange result of this long-standing conflict is that, to this day, both countries refuse to claim Bir Tawil, an area of land roughly the size of London, as it would mean giving up a greater prize. This makes Bir Tawil the largest — perhaps the only — piece of land that no country wants.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p4-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+Bir Tawil is a strange place. In January 1899, administrators of the British Empire decided to finalize a border between the countries of Egypt and Sudan. In colonial fashion, they decided to use the conveniently straight line of the twenty-second parallel of latitude. Unsurprisingly, this new international border arbitrarily tore through local tribes and communities, and in 1902, the British drew a new line to reflect tribal territories. The combination of these two intersecting lines brought about the creation of two new areas: the large, inhabitable coastal area called the Hala'ib Triangle and an empty, landlocked patch of desert, which is Bir Tawil. To keep the desirable Hala'ib, Egypt understandably claimed the original, straight border of 1899, whereas Sudan — with the same goal in mind — claimed the new 1902 line. The strange result of this long-standing conflict is that, to this day, both countries refuse to claim Bir Tawil, an area of land roughly the size of London, as it would mean giving up a greater prize. This makes Bir Tawil the largest — perhaps the only — piece of land that no country wants.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">Bir Tawil is a strange place.</div>
+<div class="slash">Bir Tawil / is a strange place.</div>
+<div class="literal">Bir Tawil은 / 이상한 장소이다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 2형식 SVC (be + 명사보어)</span> <span class="gm-ex">▶ Bir Tawil is a strange place.</span> <span class="gm-pt">★ 첫 문장으로 주제 도입 — "이상한 장소"라는 표현이 글 전체의 핵심 키워드</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">In January 1899, administrators of the British Empire decided to finalize a border between the countries of Egypt and Sudan.</div>
+<div class="slash">In January 1899, / administrators of the British Empire / decided to finalize / a border / between the countries of Egypt and Sudan.</div>
+<div class="literal">1899년 1월에 / 대영 제국의 행정관들이 / 확정하기로 결정했다 / 국경을 / 이집트와 수단 두 나라 사이의</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ decide + to부정사 (3형식)</span> <span class="gm-ex">▶ decided to finalize a border</span> <span class="gm-pt">★ decide는 to부정사를 목적어로 취함; decide ~ing 불가 — 어법 출제 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ between A and B (전치사구)</span> <span class="gm-ex">▶ between the countries of Egypt and Sudan</span> <span class="gm-pt">★ "A와 B 사이에"; among과 구분 (between은 둘 사이, among은 셋 이상)</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">In colonial fashion, they decided to use the conveniently straight line of the twenty-second parallel of latitude.</div>
+<div class="slash">In colonial fashion, / they decided to use / the conveniently straight line / of the twenty-second parallel of latitude.</div>
+<div class="literal">식민지적 방식으로 / 그들은 사용하기로 결정했다 / 편리하게 직선인 선을 / 북위 22도의</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 부사 + 형용사 (분사 수식과 구분)</span> <span class="gm-ex">▶ the conveniently straight line</span> <span class="gm-pt">★ 부사 conveniently가 형용사 straight를 수식; "편리하게 직선인" — 어순 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ in ~ fashion (관용 전치사구)</span> <span class="gm-ex">▶ in colonial fashion = "식민지적 방식으로"</span> <span class="gm-pt">★ in a/the ~ way / manner와 동의어; 어휘 영작 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ the twenty-second parallel of latitude (서수)</span> <span class="gm-ex">▶ "북위 22도선"</span> <span class="gm-pt">★ parallel of latitude = 위도선; longitude(경도)와 구분</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">Unsurprisingly, this new international border arbitrarily tore through local tribes and communities, and in 1902, the British drew a new line to reflect tribal territories.</div>
+<div class="slash">Unsurprisingly, / this new international border / arbitrarily tore through / local tribes and communities, / and in 1902, / the British drew a new line / to reflect tribal territories.</div>
+<div class="literal">놀랄 것도 없이 / 이 새로운 국제 국경은 / 임의로 가로질렀다 / 지역 부족과 공동체를 / 그리고 1902년에 / 영국은 새로운 선을 그었다 / 부족의 영토를 반영하기 위해</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 등위접속사 and + 두 절 병렬</span> <span class="gm-ex">▶ this border ~ tore through ~ , and ~ the British drew ~</span> <span class="gm-pt">★ 두 개의 독립절이 and로 연결; 각 절의 시제(과거) 일치 확인</span></div>
+<div class="grammar-item"><span class="gm-name">◆ tear through (구동사, 과거형 tore)</span> <span class="gm-ex">▶ "~을 가로질러 찢다, 관통하다"</span> <span class="gm-pt">★ tear-tore-torn 불규칙 변화 — 어휘·어법 출제; cut through와 유사</span></div>
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 부사적 용법 (목적)</span> <span class="gm-ex">▶ drew a new line [to reflect tribal territories]</span> <span class="gm-pt">★ "~을 반영하기 위해"; in order to / so as to로 환언 가능</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">The combination of these two intersecting lines brought about the creation of two new areas: the large, inhabitable coastal area called the Hala'ib Triangle and an empty, landlocked patch of desert, which is Bir Tawil.</div>
+<div class="slash">The combination of these two intersecting lines / brought about / the creation of two new areas: / the large, inhabitable coastal area / called the Hala'ib Triangle / and an empty, landlocked patch of desert, / which is Bir Tawil.</div>
+<div class="literal">이 두 교차하는 선의 결합은 / 가져왔다 / 두 새 지역의 탄생을 / 크고, 거주 가능한 해안 지역인 / Hala'ib 삼각지대라고 불리는 / 그리고 비어 있고 내륙에 둘러싸인 사막 한 조각 / 즉, Bir Tawil인</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ bring about (구동사)</span> <span class="gm-ex">▶ "~을 야기하다, 초래하다" — cause와 동의</span> <span class="gm-pt">★ bring up(키우다)/bring in(들이다) 등과 구분 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 콜론(:)으로 동격·부연</span> <span class="gm-ex">▶ two new areas: the ~ Triangle and ~ Bir Tawil</span> <span class="gm-pt">★ 콜론 뒤에 앞 명사의 구체적 내용 제시 — 글 구조 분석 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 후치수식 vs 관계대명사 + be 생략</span> <span class="gm-ex">▶ the area [called the Hala'ib Triangle] = which is called ~</span> <span class="gm-pt">★ 과거분사 called가 area를 수식; which is의 생략 형태</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 계속적 용법의 which (콤마 + which)</span> <span class="gm-ex">▶ a patch of desert, which is Bir Tawil</span> <span class="gm-pt">★ 앞 명사(desert)에 부연 설명; that 사용 불가 — 어법 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">To keep the desirable Hala'ib, Egypt understandably claimed the original, straight border of 1899, whereas Sudan — with the same goal in mind — claimed the new 1902 line.</div>
+<div class="slash">To keep the desirable Hala'ib, / Egypt understandably claimed / the original, straight border of 1899, / whereas Sudan / — with the same goal in mind — / claimed the new 1902 line.</div>
+<div class="literal">탐나는 Hala'ib을 차지하기 위해 / 이집트는 당연하게도 주장했다 / 1899년의 원래 직선 국경을 / 반면에 수단은 / — 같은 목표를 염두에 두고 — / 새로운 1902년 선을 주장했다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 부사적 용법 (목적, 문두)</span> <span class="gm-ex">▶ To keep the desirable Hala'ib, ~</span> <span class="gm-pt">★ "~하기 위해" — 문장 첫머리에서 목적을 표현; 콤마로 본절과 분리</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 접속사 whereas (대조)</span> <span class="gm-ex">▶ Egypt claimed ~ , whereas Sudan claimed ~</span> <span class="gm-pt">★ "반면에" — while과 동의어; 두 항목의 대조를 명확히 드러내는 연결어</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대시(—)를 활용한 부연 삽입</span> <span class="gm-ex">▶ Sudan — with the same goal in mind — claimed ~</span> <span class="gm-pt">★ 주어와 본동사 사이에 부연 어구 삽입; 본동사 claimed의 주어가 Sudan임을 파악</span></div>
+<div class="grammar-item"><span class="gm-name">◆ with + O + 분사 (부대상황)</span> <span class="gm-ex">▶ with the same goal [in mind] (= keeping ~ in mind)</span> <span class="gm-pt">★ "~을 염두에 두고" — 동시상황·부대상황 표현; 빈출 표현</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">The strange result of this long-standing conflict is that, to this day, both countries refuse to claim Bir Tawil, an area of land roughly the size of London, as it would mean giving up a greater prize.</div>
+<div class="slash">The strange result of this long-standing conflict / is that, / to this day, / both countries refuse to claim Bir Tawil, / an area of land / roughly the size of London, / as it would mean / giving up a greater prize.</div>
+<div class="literal">이 오래 지속된 분쟁의 이상한 결과는 / ~이다 / 오늘날까지 / 두 나라 모두 Bir Tawil을 주장하기를 거부한다는 것 / 한 지역의 땅 / 대략 런던의 크기인 / 왜냐하면 그것이 ~을 의미하기 때문이다 / 더 큰 상을 포기하는 것을</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 명사절 보어의 that</span> <span class="gm-ex">▶ The result is [that ~ both countries refuse to claim ~]</span> <span class="gm-pt">★ be동사 뒤의 명사절을 이끄는 접속사 that; 절 안의 주어·동사 완전 — 출제 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ refuse + to부정사</span> <span class="gm-ex">▶ refuse to claim Bir Tawil</span> <span class="gm-pt">★ refuse는 to부정사를 목적어로 취함; refuse ~ing 불가 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 동격 명사구</span> <span class="gm-ex">▶ Bir Tawil, [an area of land roughly the size of London]</span> <span class="gm-pt">★ 콤마 + 명사구 = 앞 명사의 부연 설명; "~인 ~"으로 해석</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 이유의 as + 가정법 (would mean + 동명사)</span> <span class="gm-ex">▶ as it would mean giving up a greater prize</span> <span class="gm-pt">★ as = because; mean + 동명사 = "~을 의미하다(=결과)"; mean + to부정사(=의도)와 구분 어법 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 8 -->
+<div class="sentence-block">
+<span class="sent-num">⑧</span>
+<div class="eng-box">This makes Bir Tawil the largest — perhaps the only — piece of land that no country wants.</div>
+<div class="slash">This makes / Bir Tawil / the largest / — perhaps the only — / piece of land / that no country wants.</div>
+<div class="literal">이것이 만든다 / Bir Tawil을 / 가장 큰 / — 아마도 유일한 — / 한 조각의 땅으로 / 어떤 나라도 원하지 않는</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 5형식 make + O + 명사보어 (OC)</span> <span class="gm-ex">▶ makes Bir Tawil [the largest ~ piece of land]</span> <span class="gm-pt">★ "O를 ~로 만들다" — 5형식 명사 보어; 보어가 형용사·명사·동사원형 등 다양 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (목적격, 선행사=land)</span> <span class="gm-ex">▶ piece of land [that no country wants]</span> <span class="gm-pt">★ 선행사가 최상급(the largest)일 때 that 선호; which 사용 시 어색 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대시(—)를 이용한 부연 삽입</span> <span class="gm-ex">▶ the largest — perhaps the only — piece of land</span> <span class="gm-pt">★ the largest와 piece 사이에 부연어구 삽입; 의미상 the largest piece of land로 자연스럽게 연결</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p4-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">administrator</div><div class="word-ko">행정관, 관리자</div><div class="word-pos">n.</div><div class="word-deriv">administer (v.), administration (n.)</div></div>
+<div class="word-row"><div class="word-en">finalize</div><div class="word-ko">최종 확정하다, 마무리하다</div><div class="word-pos">v.</div><div class="word-deriv">final (adj.), finalization (n.)</div></div>
+<div class="word-row"><div class="word-en">border</div><div class="word-ko">국경, 경계</div><div class="word-pos">n.</div><div class="word-deriv">bordering (adj.)</div></div>
+<div class="word-row"><div class="word-en">colonial</div><div class="word-ko">식민의, 식민지의</div><div class="word-pos">adj.</div><div class="word-deriv">colony (n.), colonize (v.)</div></div>
+<div class="word-row"><div class="word-en">parallel of latitude</div><div class="word-ko">위도선</div><div class="word-pos">n.phr.</div><div class="word-deriv">latitude (n.)</div></div>
+<div class="word-row"><div class="word-en">arbitrarily</div><div class="word-ko">임의로, 자의적으로</div><div class="word-pos">adv.</div><div class="word-deriv">arbitrary (adj.)</div></div>
+<div class="word-row"><div class="word-en">tear through</div><div class="word-ko">~을 가로질러 찢다</div><div class="word-pos">v.phr.</div><div class="word-deriv">tear-tore-torn (불규칙)</div></div>
+<div class="word-row"><div class="word-en">tribe</div><div class="word-ko">부족</div><div class="word-pos">n.</div><div class="word-deriv">tribal (adj.)</div></div>
+<div class="word-row"><div class="word-en">intersect</div><div class="word-ko">교차하다, 가로지르다</div><div class="word-pos">v.</div><div class="word-deriv">intersection (n.), intersecting (adj.)</div></div>
+<div class="word-row"><div class="word-en">bring about</div><div class="word-ko">야기하다, 초래하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">inhabitable</div><div class="word-ko">거주 가능한</div><div class="word-pos">adj.</div><div class="word-deriv">inhabit (v.), inhabitant (n.)</div></div>
+<div class="word-row"><div class="word-en">landlocked</div><div class="word-ko">내륙에 둘러싸인</div><div class="word-pos">adj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">desirable</div><div class="word-ko">바람직한, 탐나는</div><div class="word-pos">adj.</div><div class="word-deriv">desire (n./v.), desirability (n.)</div></div>
+<div class="word-row"><div class="word-en">claim</div><div class="word-ko">주장하다, 영유권을 주장하다</div><div class="word-pos">v.</div><div class="word-deriv">claim (n.), claimant (n.)</div></div>
+<div class="word-row"><div class="word-en">whereas</div><div class="word-ko">반면에</div><div class="word-pos">conj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">long-standing</div><div class="word-ko">오랜 기간 지속되는</div><div class="word-pos">adj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">conflict</div><div class="word-ko">갈등, 분쟁</div><div class="word-pos">n./v.</div><div class="word-deriv">conflicting (adj.)</div></div>
+<div class="word-row"><div class="word-en">refuse to V</div><div class="word-ko">~하기를 거부하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">refusal (n.)</div></div>
+<div class="word-row"><div class="word-en">give up</div><div class="word-ko">포기하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p4-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+Bir Tawil은 이상한 장소이다. 1899년 1월, 대영 제국의 행정관들은 이집트와 수단 두 나라 사이의 국경을 확정하기로 결정했다. 식민지적 방식으로, 그들은 편리하게 직선인 북위 22도선을 사용하기로 결정했다. 당연하게도 이 새로운 국제 국경은 지역 부족과 공동체를 임의로 가로질렀고, 1902년에 영국은 부족의 영토를 반영하기 위해 새로운 선을 그었다. 이 두 교차하는 선의 결합은 두 개의 새로운 지역을 탄생시켰는데, 하나는 Hala'ib 삼각지대라 불리는 크고 거주 가능한 해안 지역이고, 다른 하나는 비어 있고 내륙에 둘러싸인 사막 한 조각, 즉 Bir Tawil이다. 탐나는 Hala'ib을 차지하기 위해 이집트는 당연하게도 1899년의 원래 직선 국경을 주장한 반면, 수단은 같은 목표를 염두에 두고 1902년의 새로운 선을 주장했다. 이 오래된 분쟁의 이상한 결과는, 오늘날까지도 두 나라 모두 런던 크기 정도의 땅인 Bir Tawil을 주장하기를 거부한다는 것이다. 왜냐하면 그것을 주장하는 순간 더 큰 상(Hala'ib)을 포기해야 함을 의미하기 때문이다. 이것이 Bir Tawil을 어떤 나라도 원하지 않는, 가장 크고 — 아마도 유일한 — 땅으로 만든다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p4-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">두 나라가 모두 영유권을 거부하는 땅, Bir Tawil의 역설적 유래</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">영국의 식민 시대에 그어진 두 개의 다른 국경선이 만들어낸 두 지역 중, 풍요로운 Hala'ib을 차지하려는 이집트·수단의 상충된 주장 때문에 Bir Tawil은 어느 나라도 원하지 않는 유일한 땅이 되었다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 도입</span>Bir Tawil은 이상한 장소</div>
+<div class="flow-step"><span class="step-num">② 역사 1</span>1899년: 영국이 직선(북위 22도)으로 국경 확정</div>
+<div class="flow-step"><span class="step-num">③ 역사 2</span>1902년: 부족 영토 반영을 위해 새 국경선 — 두 지역(Hala'ib & Bir Tawil) 탄생</div>
+<div class="flow-step"><span class="step-num">④ 결과·결론</span>두 나라가 Hala'ib만 원하므로 Bir Tawil은 아무도 원하지 않는 유일한 땅이 됨</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p4-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. Bir Tawil은 어디인가?</h4>
+<p>Bir Tawil은 <strong>이집트와 수단 국경 사이에 위치한 약 2,060㎢ 면적의 무인 사막 지역</strong>이다. 아랍어로 "긴 우물(long well)"을 뜻하지만 실제로 거주민도 우물도 없는 무인지대다. 본문이 지적하듯 런던(약 1,572㎢)보다도 약간 큰 면적이며, 어떤 주권 국가도 영유권을 행사하지 않는 <strong>terra nullius(무주지)</strong>의 대표적 사례다.</p>
+
+<h4>2. 1899년 직선 국경 vs 1902년 부족 경계선</h4>
+<p>1899년 영-이 협정(Anglo-Egyptian Condominium Agreement)으로 영국은 이집트-수단의 국경을 <strong>북위 22도선이라는 인공 직선</strong>으로 설정했다. 그러나 이 선이 압바브다(Ababda)·비샤린(Bishareen) 부족의 생활권을 갈라놓자, 1902년 영국은 <strong>부족의 실제 거주 영역을 반영한 새 행정선</strong>을 추가로 그었다. 이 둘이 교차하면서 두 개의 분쟁 지역이 생겼다.</p>
+
+<h4>3. Hala'ib Triangle: 두 나라가 모두 원하는 땅</h4>
+<p><strong>Hala'ib Triangle</strong>은 약 20,580㎢의 홍해 연안 지역으로, 거주민이 있고 항구·자원 가능성도 있는 <strong>"바람직한(desirable)" 영토</strong>다. 이집트는 1899년 직선 국경 기준으로 자국 영토라 주장하고, 수단은 1902년 행정선 기준으로 자국 영토라 주장한다. 현재는 이집트가 실효 지배 중이다.</p>
+
+<h4>4. "어느 나라도 원하지 않는" 역설의 메커니즘</h4>
+<p>핵심은 <strong>한 나라가 어떤 국경선을 인정하면 그에 따라 두 지역의 귀속이 함께 결정된다</strong>는 점이다. 이집트가 1899년 선을 주장하면 Hala'ib은 이집트, Bir Tawil은 수단이 되고, 수단이 1902년 선을 주장하면 Hala'ib은 수단, Bir Tawil은 이집트가 된다. 두 나라 모두 가치 있는 Hala'ib만 원하기 때문에 결과적으로 <strong>Bir Tawil은 양쪽 모두 거부하는 유일한 영토</strong>가 된 것이다. 이는 게임 이론에서 자주 인용되는 흥미로운 사례다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p4-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q4-1">
+<li onclick="check(4,1,1,false)"><span class="opt-num">①</span> 대영 제국의 아프리카 식민 통치 정책</li>
+<li onclick="check(4,1,2,false)"><span class="opt-num">②</span> 사막 지역의 지리적 특성과 거주 환경</li>
+<li onclick="check(4,1,3,true)"><span class="opt-num">③</span> 두 나라가 영유권을 거부하는 Bir Tawil의 역설적 유래</li>
+<li onclick="check(4,1,4,false)"><span class="opt-num">④</span> 아프리카 부족 사회의 영토 분쟁사</li>
+<li onclick="check(4,1,5,false)"><span class="opt-num">⑤</span> 위도선을 활용한 현대 국제법 체계</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-1"></div>
+<button class="reset-btn" onclick="resetQuiz(4,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">… to this day, both countries refuse to claim Bir Tawil, an area of land roughly the size of London, as it would mean ____________ a greater prize.</div>
+<ul class="quiz-opts" id="q4-2">
+<li onclick="check(4,2,1,false)"><span class="opt-num">①</span> claiming</li>
+<li onclick="check(4,2,2,true)"><span class="opt-num">②</span> giving up</li>
+<li onclick="check(4,2,3,false)"><span class="opt-num">③</span> dividing</li>
+<li onclick="check(4,2,4,false)"><span class="opt-num">④</span> protecting</li>
+<li onclick="check(4,2,5,false)"><span class="opt-num">⑤</span> expanding</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-2"></div>
+<button class="reset-btn" onclick="resetQuiz(4,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">In January 1899, administrators of the British Empire ①decided to finalize a border between the countries of Egypt and Sudan. … The combination of these two intersecting lines ②brought about the creation of two new areas: the large, inhabitable coastal area ③calling the Hala'ib Triangle and an empty, landlocked patch of desert, ④which is Bir Tawil. … both countries refuse to claim Bir Tawil … as it would mean ⑤giving up a greater prize.</div>
+<ul class="quiz-opts" id="q4-3">
+<li onclick="check(4,3,1,false)"><span class="opt-num">①</span> decided to finalize</li>
+<li onclick="check(4,3,2,false)"><span class="opt-num">②</span> brought about</li>
+<li onclick="check(4,3,3,true)"><span class="opt-num">③</span> calling → called</li>
+<li onclick="check(4,3,4,false)"><span class="opt-num">④</span> which</li>
+<li onclick="check(4,3,5,false)"><span class="opt-num">⑤</span> giving up</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-3"></div>
+<button class="reset-btn" onclick="resetQuiz(4,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q4-4">
+<li onclick="check(4,4,1,false)"><span class="opt-num">①</span> 1899년 영국 행정관들은 이집트와 수단 사이 국경 확정을 결정했다.</li>
+<li onclick="check(4,4,2,false)"><span class="opt-num">②</span> 1902년에 영국은 부족의 영토를 반영하여 새로운 국경선을 그었다.</li>
+<li onclick="check(4,4,3,false)"><span class="opt-num">③</span> Hala'ib 삼각지대는 거주 가능한 해안 지역이다.</li>
+<li onclick="check(4,4,4,true)"><span class="opt-num">④</span> Bir Tawil은 두 나라 모두 적극적으로 영유권을 주장하는 지역이다.</li>
+<li onclick="check(4,4,5,false)"><span class="opt-num">⑤</span> Bir Tawil은 대략 런던과 비슷한 크기의 땅이다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-4"></div>
+<button class="reset-btn" onclick="resetQuiz(4,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> Bir Tawil is a strange place. In January 1899, administrators of the British Empire decided to finalize a border between the countries of Egypt and Sudan.<br><br>
+<strong>(A)</strong> The combination of these two intersecting lines brought about the creation of two new areas: the large, inhabitable coastal area called the Hala'ib Triangle and an empty, landlocked patch of desert, which is Bir Tawil.<br>
+<strong>(B)</strong> In colonial fashion, they decided to use the conveniently straight line of the twenty-second parallel of latitude. Unsurprisingly, this new international border arbitrarily tore through local tribes and communities, and in 1902, the British drew a new line to reflect tribal territories.<br>
+<strong>(C)</strong> To keep the desirable Hala'ib, Egypt understandably claimed the original, straight border of 1899, whereas Sudan claimed the new 1902 line. The strange result is that both countries refuse to claim Bir Tawil.
+</div>
+<ul class="quiz-opts" id="q4-5">
+<li onclick="check(4,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(4,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(4,5,3,false)"><span class="opt-num">③</span> (B) - (C) - (A)</li>
+<li onclick="check(4,5,4,true)"><span class="opt-num">④</span> (B) - (A) - (C)</li>
+<li onclick="check(4,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-5"></div>
+<button class="reset-btn" onclick="resetQuiz(4,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">Because Egypt and Sudan both want to keep the desirable <strong>(A) __________</strong>, they each support a different border line, and as a result, both countries <strong>(B) __________</strong> to claim Bir Tawil — making it the largest piece of land that no country wants.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(4,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans4-1">
+<strong>(A)</strong> Hala'ib &nbsp;|&nbsp; <strong>(B)</strong> refuse<br>
+<strong>해설:</strong> 본문 ⑥번 문장 "To keep the desirable <em>Hala'ib</em> ~"과 ⑦번 문장 "both countries <em>refuse</em> to claim Bir Tawil"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 이집트와 수단이 Bir Tawil을 영유권 주장하지 않는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 35 단어 내외 · "Hala'ib"과 "claim" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(4,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans4-2">
+<strong>모범답안:</strong> Because each country supports the border line that grants them the more desirable Hala'ib Triangle, claiming Bir Tawil would automatically mean giving up Hala'ib, so neither Egypt nor Sudan is willing to claim Bir Tawil.<br><br>
+<strong>해설:</strong> 본문 ⑥·⑦번 문장의 논리 — "Hala'ib을 차지하려는 두 나라의 상충된 국경 주장 때문에 Bir Tawil을 주장하면 더 큰 상(Hala'ib)을 포기하게 된다"를 인과로 정리한 답안.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 4 끝 ============ -->
+<!-- ============ 지문 5: Reference Group Effects ============ -->
+<div class="passage-block" id="p5">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(5,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(5,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(5,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(5,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(5,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(5,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(5,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p5-full">
+<div class="card">
+<h3>Reference Group Effects</h3>
+<div class="sub">준거집단이 자기 평가에 미치는 세 가지 효과</div>
+<div class="full-text">
+An in-group can become a reference group, a group that is used as the frame of reference for evaluating one's own behavior. Members of a volunteer organization, for example, may evaluate themselves by the standards of the group and feel proud about their contribution to a community service project. This positive self-evaluation reflects the normative effect of a reference group whose members share the same view of themselves. If other members of your reference group (say, your parents) have high self-esteem, you, too, are likely to share that norm and have high self-esteem. The normative effect basically involves imitating the reference group. However, reference groups can also have comparison effects and associative effects on self-appraisals. If most of your classmates shine in academic achievement, you are likely to compare yourself with them. As a result, you may have a negative self-evaluation, feeling that your academic performance is not up to par. Being associated with the brilliant group, though, makes you feel proud of yourself, "basking in reflected glory."
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p5-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+An in-group can become a reference group, a group that is used as the frame of reference for evaluating one's own behavior. Members of a volunteer organization, for example, may evaluate themselves by the standards of the group and feel proud about their contribution to a community service project. This positive self-evaluation reflects the normative effect of a reference group whose members share the same view of themselves. If other members of your reference group (say, your parents) have high self-esteem, you, too, are likely to share that norm and have high self-esteem. The normative effect basically involves imitating the reference group. However, reference groups can also have comparison effects and associative effects on self-appraisals. If most of your classmates shine in academic achievement, you are likely to compare yourself with them. As a result, you may have a negative self-evaluation, feeling that your academic performance is not up to par. Being associated with the brilliant group, though, makes you feel proud of yourself, "basking in reflected glory."
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">An in-group can become a reference group, a group that is used as the frame of reference for evaluating one's own behavior.</div>
+<div class="slash">An in-group can become / a reference group, / a group / that is used / as the frame of reference / for evaluating one's own behavior.</div>
+<div class="literal">내집단은 ~이 될 수 있다 / 준거집단이 / 집단인 / 사용되는 / 기준 틀로서 / 자신의 행동을 평가하기 위한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 동격 명사구 (콤마 + 명사)</span> <span class="gm-ex">▶ a reference group, [a group that ~] — reference group의 동격</span> <span class="gm-pt">★ 콤마 뒤 명사구가 앞 명사를 부연 설명; "즉, ~인"으로 해석 — 출제 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격, 수동태)</span> <span class="gm-ex">▶ a group [that is used as ~]</span> <span class="gm-pt">★ 선행사 group + 주격 관계대명사 that + 수동태 is used; "사용되는 집단"</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 전치사 + 동명사 (for V-ing)</span> <span class="gm-ex">▶ for evaluating one's own behavior</span> <span class="gm-pt">★ 전치사 for 뒤에는 동명사; "~을 평가하기 위한" 목적의 의미 — 어법 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">Members of a volunteer organization, for example, may evaluate themselves by the standards of the group and feel proud about their contribution to a community service project.</div>
+<div class="slash">Members of a volunteer organization, / for example, / may evaluate themselves / by the standards of the group / and feel proud about / their contribution / to a community service project.</div>
+<div class="literal">자원봉사 단체의 구성원들은 / 예를 들어 / 자신을 평가할지도 모른다 / 그 집단의 기준에 의해 / 그리고 자랑스러워할지도 모른다 / 그들의 기여에 대해 / 지역사회 봉사 프로젝트에 대한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 조동사 may + 동사원형 두 개 병렬</span> <span class="gm-ex">▶ may [evaluate themselves ~] and [feel proud ~]</span> <span class="gm-pt">★ may 뒤에 두 개의 동사원형이 and로 병렬; 형태·시제 일치 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 재귀대명사 themselves</span> <span class="gm-ex">▶ evaluate themselves — 주어=목적어</span> <span class="gm-pt">★ 주어(Members)와 목적어가 같으므로 재귀대명사; them으로 바꾸면 오류</span></div>
+<div class="grammar-item"><span class="gm-name">◆ feel proud about/of + 명사</span> <span class="gm-ex">▶ feel proud about their contribution</span> <span class="gm-pt">★ "~을 자랑스러워하다"; about/of 모두 가능 — 영작·어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ contribution to + 명사</span> <span class="gm-ex">▶ their contribution to a community service project</span> <span class="gm-pt">★ contribution은 전치사 to와 결합; for나 in 사용 시 오류</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">This positive self-evaluation reflects the normative effect of a reference group whose members share the same view of themselves.</div>
+<div class="slash">This positive self-evaluation / reflects / the normative effect / of a reference group / whose members / share the same view / of themselves.</div>
+<div class="literal">이 긍정적인 자기 평가는 / 반영한다 / 규범적 효과를 / 준거집단의 / 그 구성원들이 / 동일한 견해를 공유하는 / 자신들에 대한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 소유격 관계대명사 whose</span> <span class="gm-ex">▶ a reference group [whose members share ~]</span> <span class="gm-pt">★ "그 집단의 구성원들이 ~하는"; 선행사가 사물·집단일 때도 whose 사용 가능 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ share + 명사 + of + 명사</span> <span class="gm-ex">▶ share the same view of themselves</span> <span class="gm-pt">★ "자신들에 대한 동일한 견해를 공유하다"; "~에 대한 견해" view of ~ 어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 재귀대명사 themselves (소유격 관계대명사 절 내부)</span> <span class="gm-ex">▶ ~ whose members share the same view of themselves</span> <span class="gm-pt">★ 재귀대명사가 가리키는 주어 = members (관계대명사절의 주어) — 정확한 지시 파악</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">If other members of your reference group (say, your parents) have high self-esteem, you, too, are likely to share that norm and have high self-esteem.</div>
+<div class="slash">If other members of your reference group / (say, your parents) / have high self-esteem, / you, too, / are likely to share that norm / and have high self-esteem.</div>
+<div class="literal">만약 당신의 준거집단의 다른 구성원들이 / (예를 들어 당신의 부모님이) / 높은 자존감을 가지고 있다면 / 당신 또한 / 그 규범을 공유할 가능성이 있다 / 그리고 높은 자존감을 가질 (가능성이 있다)</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 조건절 If + 현재시제 (일반적 사실)</span> <span class="gm-ex">▶ If other members ~ have ~ , you are likely to ~</span> <span class="gm-pt">★ 일반적·반복적 조건은 직설법 현재형 — 가정법 과거(과거형 동사)와 구분</span></div>
+<div class="grammar-item"><span class="gm-name">◆ be likely to V (~할 가능성이 있다)</span> <span class="gm-ex">▶ you are likely to share that norm</span> <span class="gm-pt">★ "주어가 ~할 것 같다"; be unlikely to V(~하지 않을 것 같다)와 짝구문 — 영작 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ to부정사 두 개 병렬 (and로 연결)</span> <span class="gm-ex">▶ likely to [share that norm] and [have high self-esteem]</span> <span class="gm-pt">★ to share와 (to) have가 and로 병렬, 두 번째 to는 생략됨 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 삽입 부사 too (또한)</span> <span class="gm-ex">▶ you, too, are likely to ~</span> <span class="gm-pt">★ 콤마로 분리된 too는 강조의 의미; "당신 또한" — 위치에 따른 의미 강조 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">The normative effect basically involves imitating the reference group.</div>
+<div class="slash">The normative effect / basically involves / imitating the reference group.</div>
+<div class="literal">규범적 효과는 / 기본적으로 ~을 포함한다 / 준거집단을 모방하는 것을</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ involve + 동명사 (목적어로 V-ing)</span> <span class="gm-ex">▶ involves imitating the reference group</span> <span class="gm-pt">★ involve는 동명사를 목적어로 취함; involve to V 불가 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사 basically (기본적으로)</span> <span class="gm-ex">▶ basically involves ~</span> <span class="gm-pt">★ "근본적으로, 기본적으로" — essentially / fundamentally와 동의 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">However, reference groups can also have comparison effects and associative effects on self-appraisals.</div>
+<div class="slash">However, / reference groups can also have / comparison effects and associative effects / on self-appraisals.</div>
+<div class="literal">그러나 / 준거집단은 또한 가질 수 있다 / 비교 효과와 연합 효과를 / 자기 평가에 대한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 역접의 연결사 However</span> <span class="gm-ex">▶ "그러나" — 앞 내용(규범적 효과)에서 다른 두 효과로 전환</span> <span class="gm-pt">★ 글의 흐름·문장 삽입 단서; However + 콤마로 분리 — 어법·구조 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ have an effect on (관용 구문)</span> <span class="gm-ex">▶ have ~ effects on self-appraisals</span> <span class="gm-pt">★ "~에 영향을 끼치다" = affect; 전치사는 반드시 on — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 명사 두 개 병렬 (A and B)</span> <span class="gm-ex">▶ [comparison effects] and [associative effects]</span> <span class="gm-pt">★ 두 종류의 효과가 and로 병렬; 글의 구조상 추가될 두 핵심 개념을 제시</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">If most of your classmates shine in academic achievement, you are likely to compare yourself with them.</div>
+<div class="slash">If most of your classmates / shine in academic achievement, / you are likely to compare yourself / with them.</div>
+<div class="literal">만약 당신의 학급 친구 대부분이 / 학업 성취에서 빛난다면 / 당신은 자신을 비교할 가능성이 있다 / 그들과</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ most of + the/소유격 + 복수명사 + 복수동사</span> <span class="gm-ex">▶ most of your classmates <strong>shine</strong></span> <span class="gm-pt">★ most of 뒤의 명사에 동사 일치; classmates(복수) → shine(복수동사) — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ compare A with B (구문)</span> <span class="gm-ex">▶ compare yourself with them</span> <span class="gm-pt">★ "A를 B와 비교하다"; compare to(~에 비유하다)와 구분 — 어휘·어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ shine in (구동사)</span> <span class="gm-ex">▶ shine in academic achievement = 학업 성취에서 두각을 나타내다</span> <span class="gm-pt">★ "~에서 빛나다/뛰어나다"; excel in과 동의 — 어휘 표현 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 8 -->
+<div class="sentence-block">
+<span class="sent-num">⑧</span>
+<div class="eng-box">As a result, you may have a negative self-evaluation, feeling that your academic performance is not up to par.</div>
+<div class="slash">As a result, / you may have / a negative self-evaluation, / feeling / that your academic performance / is not up to par.</div>
+<div class="literal">결과적으로 / 당신은 가질지도 모른다 / 부정적인 자기 평가를 / 느끼면서 / 당신의 학업 성취가 / 기준에 미치지 못한다고</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 분사구문 (능동, 동시상황)</span> <span class="gm-ex">▶ you may have ~ , [feeling that ~]</span> <span class="gm-pt">★ 주어(you)가 동시에 "느끼며" — 능동 분사구문 feeling; as you feel that ~로 환원 가능</span></div>
+<div class="grammar-item"><span class="gm-name">◆ feel + that절 (인지 동사 + 명사절)</span> <span class="gm-ex">▶ feeling that your academic performance is ~</span> <span class="gm-pt">★ feel/think/believe + that절; 명사절 접속사 that 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ be not up to par (관용 표현)</span> <span class="gm-ex">▶ "기준에 미치지 못하다, 만족스럽지 못하다"</span> <span class="gm-pt">★ par = 기준치(골프 용어 유래); fall short of와 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ As a result (연결사)</span> <span class="gm-ex">▶ "결과적으로, 그 결과"</span> <span class="gm-pt">★ Consequently / Therefore와 동의; 인과 관계의 결과 절 도입</span></div>
+</div>
+</div>
+
+<!-- 문장 9 -->
+<div class="sentence-block">
+<span class="sent-num">⑨</span>
+<div class="eng-box">Being associated with the brilliant group, though, makes you feel proud of yourself, "basking in reflected glory."</div>
+<div class="slash">Being associated with / the brilliant group, / though, / makes you feel proud of yourself, / "basking in reflected glory."</div>
+<div class="literal">~와 연합되는 것은 / 그 뛰어난 집단과 / 그러나 / 당신을 자랑스러워하게 만든다 / 자기 자신을 / "반사된 영광 속에 잠겨"</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 동명사 주어 (Being p.p.)</span> <span class="gm-ex">▶ [Being associated with the brilliant group] makes ~ </span> <span class="gm-pt">★ 동명사구가 문장의 주어; 단수 취급 → 동사 makes — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 5형식 make + O + 동사원형 (사역동사)</span> <span class="gm-ex">▶ makes you [feel proud of yourself]</span> <span class="gm-pt">★ 사역동사 make는 목적격 보어로 원형부정사; to feel(X) — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 삽입어 though (그러나)</span> <span class="gm-ex">▶ ~ , though, makes ~</span> <span class="gm-pt">★ 문장 중간/끝에 위치한 though = however 의미의 부사; 콤마로 분리</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 분사구문 (능동, 부대상황 - 인용)</span> <span class="gm-ex">▶ ~ feel proud of yourself, "basking in reflected glory"</span> <span class="gm-pt">★ "반사된 영광에 잠긴 채" — 상태 묘사 분사구문; 사회심리학의 BIRG 개념</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p5-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">in-group</div><div class="word-ko">내집단</div><div class="word-pos">n.</div><div class="word-deriv">out-group (반의어)</div></div>
+<div class="word-row"><div class="word-en">reference group</div><div class="word-ko">준거집단</div><div class="word-pos">n.phr.</div><div class="word-deriv">refer (v.), reference (n.)</div></div>
+<div class="word-row"><div class="word-en">frame of reference</div><div class="word-ko">기준 틀, 준거 틀</div><div class="word-pos">n.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">evaluate</div><div class="word-ko">평가하다</div><div class="word-pos">v.</div><div class="word-deriv">evaluation (n.), evaluator (n.)</div></div>
+<div class="word-row"><div class="word-en">behavior</div><div class="word-ko">행동, 행위</div><div class="word-pos">n.</div><div class="word-deriv">behave (v.), behavioral (adj.)</div></div>
+<div class="word-row"><div class="word-en">standard</div><div class="word-ko">기준, 표준</div><div class="word-pos">n.</div><div class="word-deriv">standardize (v.)</div></div>
+<div class="word-row"><div class="word-en">contribution</div><div class="word-ko">기여, 공헌</div><div class="word-pos">n.</div><div class="word-deriv">contribute (v.)</div></div>
+<div class="word-row"><div class="word-en">normative</div><div class="word-ko">규범적인</div><div class="word-pos">adj.</div><div class="word-deriv">norm (n.), normatively (adv.)</div></div>
+<div class="word-row"><div class="word-en">share</div><div class="word-ko">공유하다</div><div class="word-pos">v.</div><div class="word-deriv">sharing (n.), shared (adj.)</div></div>
+<div class="word-row"><div class="word-en">self-esteem</div><div class="word-ko">자존감</div><div class="word-pos">n.</div><div class="word-deriv">esteem (v./n.)</div></div>
+<div class="word-row"><div class="word-en">imitate</div><div class="word-ko">모방하다</div><div class="word-pos">v.</div><div class="word-deriv">imitation (n.), imitative (adj.)</div></div>
+<div class="word-row"><div class="word-en">comparison effect</div><div class="word-ko">비교 효과</div><div class="word-pos">n.phr.</div><div class="word-deriv">compare (v.)</div></div>
+<div class="word-row"><div class="word-en">associative effect</div><div class="word-ko">연합 효과</div><div class="word-pos">n.phr.</div><div class="word-deriv">associate (v.), association (n.)</div></div>
+<div class="word-row"><div class="word-en">self-appraisal</div><div class="word-ko">자기 평가</div><div class="word-pos">n.</div><div class="word-deriv">appraise (v.), appraisal (n.)</div></div>
+<div class="word-row"><div class="word-en">shine in</div><div class="word-ko">~에서 두각을 나타내다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">academic achievement</div><div class="word-ko">학업 성취</div><div class="word-pos">n.phr.</div><div class="word-deriv">academic (adj.), achieve (v.)</div></div>
+<div class="word-row"><div class="word-en">be not up to par</div><div class="word-ko">기준에 미치지 못하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">par (n.)</div></div>
+<div class="word-row"><div class="word-en">be associated with</div><div class="word-ko">~와 연관되다, 연합되다</div><div class="word-pos">v.phr.</div><div class="word-deriv">associate (v.)</div></div>
+<div class="word-row"><div class="word-en">bask in</div><div class="word-ko">~을 만끽하다, 즐기다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">reflected glory</div><div class="word-ko">반사된 영광</div><div class="word-pos">n.phr.</div><div class="word-deriv">reflect (v.)</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p5-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+내집단(in-group)은 준거집단이 될 수 있는데, 이는 자기 자신의 행동을 평가하는 기준 틀로 사용되는 집단을 말한다. 예를 들어, 자원봉사 단체의 구성원들은 그 집단의 기준에 따라 자신을 평가하고, 지역사회 봉사 프로젝트에 기여한 것을 자랑스러워할 수 있다. 이러한 긍정적 자기 평가는 구성원들이 자신들에 대해 동일한 견해를 공유하는 준거집단의 '규범적 효과(normative effect)'를 반영한다. 만약 당신의 준거집단의 다른 구성원들(예를 들어 부모님)이 높은 자존감을 가지고 있다면, 당신 또한 그 규범을 공유하여 높은 자존감을 가질 가능성이 크다. 규범적 효과는 본질적으로 준거집단을 모방하는 것을 포함한다. 그러나 준거집단은 자기 평가에 대해 '비교 효과(comparison effects)'와 '연합 효과(associative effects)'도 가질 수 있다. 만약 당신의 학급 친구 대부분이 학업 성취에서 두각을 나타낸다면, 당신은 자신을 그들과 비교할 가능성이 크다. 그 결과 당신은 자신의 학업 성취가 기준에 미치지 못한다고 느끼며 부정적 자기 평가를 가질 수 있다. 그러나 그 뛰어난 집단에 속해 있다는 사실은 당신이 자기 자신을 자랑스럽게 느끼게 만든다 — '반사된 영광 속에 잠기는(basking in reflected glory)' 것이다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p5-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">준거집단이 자기 평가에 미치는 세 가지 효과 (규범적·비교·연합 효과)</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">내집단이 준거집단으로 작용할 때, 사람들의 자기 평가는 그 집단을 모방하는 규범적 효과, 자신을 비교하는 비교 효과, 그리고 그 집단에 속함으로써 영광을 공유하는 연합 효과의 영향을 받는다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 개념</span>준거집단 = 자기 행동 평가의 기준 틀</div>
+<div class="flow-step"><span class="step-num">② 효과 1</span>규범적 효과(normative): 집단의 기준을 모방, 자존감 공유</div>
+<div class="flow-step"><span class="step-num">③ 효과 2</span>비교 효과(comparison): 우수한 학급 친구와 비교 → 부정적 자기 평가</div>
+<div class="flow-step"><span class="step-num">④ 효과 3·결론</span>연합 효과(associative): 우수 집단 소속 → "반사된 영광" 누림</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p5-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. 준거집단(Reference Group)이란?</h4>
+<p>준거집단은 미국 사회학자 <strong>Herbert Hyman(1942)</strong>이 처음 도입한 개념으로, 개인이 자신의 가치·신념·행동·태도를 평가하거나 형성할 때 비교하거나 동일시하는 집단을 말한다. 가족, 또래 친구, 학교 동급생, 같은 직업군, 좋아하는 연예인의 팬덤, 종교 공동체 등이 대표적이다. 내집단(in-group)은 자신이 실제로 속한 집단이고, 준거집단은 반드시 속해 있을 필요는 없지만 본문에서는 둘이 겹치는 경우를 다룬다.</p>
+
+<h4>2. 세 가지 효과의 사회심리학적 의미</h4>
+<p>① <strong>규범적 효과(Normative Effect)</strong>: 집단의 가치·태도를 내면화하여 동조하는 효과. "엄마가 자존감이 높으니 나도 높다" 같은 사례. ② <strong>비교 효과(Comparison Effect)</strong>: 자신을 집단 구성원과 견주어 자기 위치를 가늠하는 효과. 우수한 친구들 속에서 상대적으로 자신이 못나 보이는 <strong>"big-fish-little-pond effect"</strong>가 대표적이다. ③ <strong>연합 효과(Associative Effect)</strong>: 단지 같은 집단에 속해 있다는 사실만으로 그 집단의 성공을 자신의 것처럼 느끼는 효과.</p>
+
+<h4>3. BIRGing — Basking in Reflected Glory</h4>
+<p>본문 끝의 <strong>"basking in reflected glory(BIRG, BIRGing)"</strong>는 사회심리학자 <strong>Robert Cialdini(1976)</strong>가 명명한 개념이다. 자신이 직접 성취하지 않아도, 자신과 연결된 사람·집단(좋아하는 스포츠 팀, 출신 학교, 국적 등)의 성공을 자기 영광으로 끌어다 쓰는 심리 현상이다. 예: 자기 학교 팀이 우승했을 때 "<strong>We won!</strong>"이라 말하는 것. 반대 개념은 CORF(Cutting Off Reflected Failure) — 패배 시 거리 두기.</p>
+
+<h4>4. 학업 성취와 자기 평가의 역설</h4>
+<p>본문은 우수한 학급 친구들과 함께 있을 때 발생하는 <strong>두 가지 상반된 효과</strong>를 보여준다. 비교 효과로는 자신감이 낮아지지만(부정적), 연합 효과로는 집단의 영광을 함께 누린다(긍정적). 같은 상황이 어느 효과를 더 자극하느냐에 따라 결과가 달라지는 것이 사회심리학의 흥미로운 발견이다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p5-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q5-1">
+<li onclick="check(5,1,1,false)"><span class="opt-num">①</span> 자원봉사 활동이 자존감 형성에 미치는 영향</li>
+<li onclick="check(5,1,2,true)"><span class="opt-num">②</span> 준거집단이 자기 평가에 미치는 세 가지 효과</li>
+<li onclick="check(5,1,3,false)"><span class="opt-num">③</span> 학급 친구들과의 학업 경쟁이 가져오는 스트레스</li>
+<li onclick="check(5,1,4,false)"><span class="opt-num">④</span> 부모의 자존감이 자녀에게 유전되는 메커니즘</li>
+<li onclick="check(5,1,5,false)"><span class="opt-num">⑤</span> 내집단과 외집단의 사회심리학적 경계</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-1"></div>
+<button class="reset-btn" onclick="resetQuiz(5,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">However, reference groups can also have comparison effects and associative effects on self-appraisals. If most of your classmates shine in academic achievement, you are likely to ____________ yourself with them.</div>
+<ul class="quiz-opts" id="q5-2">
+<li onclick="check(5,2,1,false)"><span class="opt-num">①</span> identify</li>
+<li onclick="check(5,2,2,false)"><span class="opt-num">②</span> imitate</li>
+<li onclick="check(5,2,3,true)"><span class="opt-num">③</span> compare</li>
+<li onclick="check(5,2,4,false)"><span class="opt-num">④</span> replace</li>
+<li onclick="check(5,2,5,false)"><span class="opt-num">⑤</span> isolate</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-2"></div>
+<button class="reset-btn" onclick="resetQuiz(5,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">This positive self-evaluation reflects the normative effect of a reference group ①whose members share the same view of themselves. … The normative effect basically involves ②imitating the reference group. … If most of your classmates ③shines in academic achievement, you are likely to compare yourself with them. … ④Being associated with the brilliant group, though, ⑤makes you feel proud of yourself.</div>
+<ul class="quiz-opts" id="q5-3">
+<li onclick="check(5,3,1,false)"><span class="opt-num">①</span> whose</li>
+<li onclick="check(5,3,2,false)"><span class="opt-num">②</span> imitating</li>
+<li onclick="check(5,3,3,true)"><span class="opt-num">③</span> shines → shine</li>
+<li onclick="check(5,3,4,false)"><span class="opt-num">④</span> Being associated</li>
+<li onclick="check(5,3,5,false)"><span class="opt-num">⑤</span> makes</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-3"></div>
+<button class="reset-btn" onclick="resetQuiz(5,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q5-4">
+<li onclick="check(5,4,1,false)"><span class="opt-num">①</span> 내집단은 준거집단이 될 수 있다.</li>
+<li onclick="check(5,4,2,false)"><span class="opt-num">②</span> 규범적 효과는 본질적으로 준거집단을 모방하는 것을 포함한다.</li>
+<li onclick="check(5,4,3,false)"><span class="opt-num">③</span> 우수한 학급 친구들과 자신을 비교하면 부정적 자기 평가가 생길 수 있다.</li>
+<li onclick="check(5,4,4,true)"><span class="opt-num">④</span> 준거집단은 자기 평가에 오직 한 가지 효과(규범적 효과)만 미친다.</li>
+<li onclick="check(5,4,5,false)"><span class="opt-num">⑤</span> 뛰어난 집단에 속해 있다는 사실이 자긍심을 느끼게 할 수 있다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-4"></div>
+<button class="reset-btn" onclick="resetQuiz(5,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> An in-group can become a reference group, a group that is used as the frame of reference for evaluating one's own behavior.<br><br>
+<strong>(A)</strong> If other members of your reference group (say, your parents) have high self-esteem, you, too, are likely to share that norm and have high self-esteem. The normative effect basically involves imitating the reference group.<br>
+<strong>(B)</strong> Members of a volunteer organization, for example, may evaluate themselves by the standards of the group and feel proud about their contribution to a community service project. This positive self-evaluation reflects the normative effect of a reference group whose members share the same view of themselves.<br>
+<strong>(C)</strong> However, reference groups can also have comparison effects and associative effects on self-appraisals. If most of your classmates shine in academic achievement, you are likely to compare yourself with them.
+</div>
+<ul class="quiz-opts" id="q5-5">
+<li onclick="check(5,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(5,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(5,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(5,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(5,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-5"></div>
+<button class="reset-btn" onclick="resetQuiz(5,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">Reference groups influence self-evaluation in three ways: the <strong>(A) __________</strong> effect, which involves imitating the group; the comparison effect, which arises from comparing oneself with members; and the <strong>(B) __________</strong> effect, which lets a person bask in reflected glory.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(5,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans5-1">
+<strong>(A)</strong> normative &nbsp;|&nbsp; <strong>(B)</strong> associative<br>
+<strong>해설:</strong> 본문 ⑤번 문장 "The <em>normative</em> effect basically involves imitating ~"과 ⑥번 문장 "comparison effects and <em>associative</em> effects"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 우수한 학급 친구들과 같은 집단에 속해 있을 때 발생하는 두 가지 상반된 자기 평가 효과를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 35 단어 내외 · "negative"와 "proud" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(5,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans5-2">
+<strong>모범답안:</strong> Through the comparison effect, you may have a negative self-evaluation by feeling that your academic performance is not up to par, but through the associative effect, being part of the brilliant group still makes you feel proud of yourself.<br><br>
+<strong>해설:</strong> 본문 ⑦·⑧번 문장(comparison effect → negative self-evaluation)과 ⑨번 문장(associative effect → proud)을 대조 구조로 결합한 답안. but/though로 두 효과의 상반성을 명확히 드러내야 함.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 5 끝 ============ -->
+
+
+<script>
+// 지문 전환
+function showPassage(n) {
+  // 사이드바 li active 토글
+  var lis = document.querySelectorAll('.passage-list li');
+  for (var i = 0; i < lis.length; i++) { lis[i].classList.remove('active'); }
+  lis[n-1].classList.add('active');
+  // passage-block active 토글
+  var blocks = document.querySelectorAll('.passage-block');
+  for (var j = 0; j < blocks.length; j++) { blocks[j].classList.remove('active'); }
+  document.getElementById('p' + n).classList.add('active');
+  // 해당 지문의 첫 번째 탭(full)으로 초기화
+  showTab(n, 'full');
+  // 페이지 상단으로 스크롤
+  window.scrollTo(0, 0);
+}
+
+// 탭 전환
+function showTab(n, tab) {
+  // 해당 지문 내의 탭만 처리
+  var pBlock = document.getElementById('p' + n);
+  if (!pBlock) return;
+  var tabs = pBlock.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('active'); }
+  var contents = pBlock.querySelectorAll('.tab-content');
+  for (var j = 0; j < contents.length; j++) { contents[j].classList.remove('active'); }
+  // 활성화할 탭 버튼 찾기
+  var tabMap = { 'full':0, 'analysis':1, 'words':2, 'trans':3, 'theme':4, 'bg':5, 'quiz':6 };
+  var idx = tabMap[tab];
+  if (typeof idx !== 'undefined' && tabs[idx]) { tabs[idx].classList.add('active'); }
+  // 활성화할 탭 콘텐츠
+  var target = document.getElementById('p' + n + '-' + tab);
+  if (target) { target.classList.add('active'); }
+}
+
+// 변형문제 정답 확인
+function check(n, q, opt, isCorrect) {
+  var ul = document.getElementById('q' + n + '-' + q);
+  if (!ul) return;
+  var lis = ul.querySelectorAll('li');
+  // 이미 풀었으면 추가 클릭 무시
+  for (var i = 0; i < lis.length; i++) {
+    if (lis[i].classList.contains('correct') || lis[i].classList.contains('wrong')) { return; }
+  }
+  var fb = document.getElementById('fb-q' + n + '-' + q);
+  if (isCorrect) {
+    lis[opt-1].classList.add('correct');
+    if (fb) {
+      fb.className = 'quiz-fb ok show';
+      fb.innerHTML = '✓ 정답입니다!';
+    }
+  } else {
+    lis[opt-1].classList.add('wrong');
+    // 정답 위치 찾기 → onclick 안의 true 값을 가진 li 표시
+    for (var k = 0; k < lis.length; k++) {
+      var onclickAttr = lis[k].getAttribute('onclick') || '';
+      if (onclickAttr.indexOf(',true)') !== -1) {
+        lis[k].classList.add('correct');
+        break;
+      }
+    }
+    if (fb) {
+      fb.className = 'quiz-fb ng show';
+      fb.innerHTML = '✗ 다시 생각해 보세요. 정답이 표시되었습니다.';
+    }
+  }
+}
+
+// 변형문제 리셋
+function resetQuiz(n, q) {
+  var ul = document.getElementById('q' + n + '-' + q);
+  if (!ul) return;
+  var lis = ul.querySelectorAll('li');
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].classList.remove('correct');
+    lis[i].classList.remove('wrong');
+  }
+  var fb = document.getElementById('fb-q' + n + '-' + q);
+  if (fb) {
+    fb.className = 'quiz-fb';
+    fb.innerHTML = '';
+  }
+}
+
+// 서술형 모범답안 토글
+function toggleAns(n, e) {
+  var ans = document.getElementById('ans' + n + '-' + e);
+  if (!ans) return;
+  ans.classList.toggle('show');
+}
+</script>
+
+</main>
+</body>
+</html>
